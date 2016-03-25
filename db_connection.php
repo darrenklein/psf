@@ -16,11 +16,15 @@ $site_array = $_POST['site'];
 
 foreach($site_array as $siteNumber => $value){
     
-    $species[$siteNumber] = $_POST['species'.$siteNumber.''];
+    $species_array[$siteNumber] = $_POST['species'.$siteNumber.''];
+    $deadinjured_array[$siteNumber] = $_POST['deadinjured'.$siteNumber.''];
     
-    foreach($species[$siteNumber] as $key => $value){
-        $sql .= "INSERT INTO PSFIST (volunteer, route, site, species)
-        VALUES ('$name', '$route', '$siteNumber', '$value');";
+    foreach($species_array[$siteNumber] as $key => $species){
+        
+        $deadinjured = $deadinjured_array[$siteNumber][$key];
+        
+        $sql .= "INSERT INTO PSFIST (volunteer, route, site, species, deadinjured)
+        VALUES ('$name', '$route', '$siteNumber', '$species', '$deadinjured');";
     };
 };
 

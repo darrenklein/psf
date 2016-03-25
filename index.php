@@ -16,10 +16,8 @@
     
 <body>
     
-    <form action="db_connection.php" method="post">
+    <form action="db_connection.php" method="post" enctype="multipart/form-data">
     
-        
-        
         <div id="survey_info" class="form_page">
             Survey info
             
