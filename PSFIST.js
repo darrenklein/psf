@@ -26,14 +26,10 @@ $(document).ready(function(){
             siteNumber = $(this).parent().attr('data-site_number');
             
             for(x = 1; x <= numberFound; x++){
-                $(this).parent().append("<select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'></input>");
+                $(this).parent().append("<select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'></input><input type='file' name='image"+siteNumber+"["+x+"]' />");
             };
         });
 
     });
  
 });
-
-
-
-//<input type='file' name='image"+siteNumber+"["+x+"]' />
