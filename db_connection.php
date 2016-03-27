@@ -11,6 +11,7 @@ $sql = '';
 
 //SURVEY INFO
 $name = $_POST['name'];
+$duration = $_POST['duration'];
 $route = $_POST['route'];
 
 //SITE INFO
@@ -26,6 +27,8 @@ foreach($site_array as $siteNumber => $value){
     
     foreach($species_array[$siteNumber] as $key => $species){
         
+        $deadinjured = $deadinjured_array[$siteNumber][$key];
+        
         if($image_array[$siteNumber][$key]){
             $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
             
@@ -38,12 +41,8 @@ foreach($site_array as $siteNumber => $value){
             $image_url = "NULL";
         };
 
-       
-        $deadinjured = $deadinjured_array[$siteNumber][$key];
-        
-        $sql .= "INSERT INTO PSFIST (volunteer, route, site, species, deadinjured, image_url)
-        VALUES ('$name', '$route', '$siteNumber', '$species', '$deadinjured', '$image_url');";
-        
+        $sql .= "INSERT INTO PSFIST (volunteer, duration, route, site, species, deadinjured, image_url)
+        VALUES ('$name', '$duration', '$route', '$siteNumber', '$species', '$deadinjured', '$image_url');";
         
     };
 };
