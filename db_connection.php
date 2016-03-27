@@ -33,7 +33,10 @@ foreach($site_array as $siteNumber => $value){
                 $image_url = $target_file;
             }
             
-        };        
+        }
+        else{
+            $image_url = "NULL";
+        };
 
        
         $deadinjured = $deadinjured_array[$siteNumber][$key];
