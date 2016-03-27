@@ -22,17 +22,18 @@ $(document).ready(function(){
         siteCount = $(this.options[this.selectedIndex]).attr('data-sites');
         
         for(i = 1; i <= siteCount; i++){
-            $("#site_info_container").append("<div class='individual_site_container' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select></div>");
+            $("#site_info_container").append("<div class='individual_site_container' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select><input type='text' id='nonenotes"+i+"' name='nonenotes"+i+"' /></div>");
         };
         
     
         $(".number_select").change(function(){
             numberFound = $(this).val();
-            
             siteNumber = $(this).parent().attr('data-site_number');
             
+            $("#nonenotes"+siteNumber+"").remove();
+            
             for(x = 1; x <= numberFound; x++){
-                $(this).parent().append("<select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'></input><input type='file' name='image"+siteNumber+"["+x+"]' />");
+                $(this).parent().append("<select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'></input><input type='file' name='image"+siteNumber+"["+x+"]' /><input type='text' name='notes"+siteNumber+"["+x+"]' />");
             };
         });
 
