@@ -20,14 +20,26 @@ $site_array = $_POST['site'];
 foreach($site_array as $siteNumber => $value){
     
     if(isset($_POST['nonenotes'.$siteNumber.''])){
-        $notes = $_POST['nonenotes'.$siteNumber.''];
+        $noneNotes = $_POST['nonenotes'.$siteNumber.''];
+        $siteImage = $_FILES['siteimage'.$siteNumber.'']['tmp_name'];
         
-        if($notes == ''){
-            $notes = "NULL";
+        if($noneNotes == ''){
+            $noneNotes = "NULL";
+        }
+        
+        if(isset($siteImage)){
+            $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
+
+            if(move_uploaded_file($siteImage, $target_file)){
+                $image_url = $target_file;
+            }
+            else{
+                $image_url = "NULL";
+            };
         }
         
         $sql .= "INSERT INTO PSFIST (volunteer, duration, route, site, species, deadinjured, notes, image_url)
-        VALUES ('$name', '$duration', '$route', '$siteNumber', 'NULL', 'NULL', '$notes' ,'NULL');";
+        VALUES ('$name', '$duration', '$route', '$siteNumber', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
     }
     else{
         $species_array[$siteNumber] = $_POST['species'.$siteNumber.''];
