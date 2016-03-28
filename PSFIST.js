@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    var birdCounter = '<option value="0">None</option>'
+    var birdCounter = '<option value="0">None</option>';
     for (x = 1; x <= 20; x++){
         birdCounter += '<option value='+x+'>'+x+'</option>';
     };
@@ -15,6 +15,14 @@ $(document).ready(function(){
 
 
     
+    
+    
+    
+    
+    
+
+    
+    
     $("#route_select").change(function(){
         $("#site_info_container").empty();
         
@@ -22,12 +30,15 @@ $(document).ready(function(){
         
         for(i = 1; i <= siteCount; i++){
             
-            noneContainer = "<div id='nonecontainer"+i+"'><label for='nonenotes"+i+"'>Notes</label><input type='text' id='nonenotes"+i+"' name='nonenotes"+i+"' /><label for='siteimage"+i+"'>Upload an image of the site</label><input type='file' id='siteimage"+i+"' name='siteimage"+i+"' /></div></div>";
-            
-            //$("#site_info_container").append("<div class='individual_site_container' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select><div id='nonecontainer"+i+"'><label for='nonenotes"+i+"'>Notes</label><input type='text' id='nonenotes"+i+"' name='nonenotes"+i+"' /><label for='siteimage"+i+"'>Upload an image of the site</label><input type='file' id='siteimage"+i+"' name='siteimage"+i+"' /></div></div>");
-            $("#site_info_container").append("<div class='individual_site_container' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select>"+noneContainer+"");
-            
+            $("#site_info_container").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select><div id='nonecontainer"+i+"'><label for='nonenotes"+i+"'>Notes</label><input type='text' id='nonenotes"+i+"' name='nonenotes"+i+"' /><label for='siteimage"+i+"'>Upload an image of the site</label><input type='file' id='siteimage"+i+"' name='siteimage"+i+"' /></div></div>");
         };
+        
+        
+
+        var siteNumber;
+        this['initiated' + siteNumber];
+        this['inputArray' + siteNumber];
+        this['arrayLength' + siteNumber];
         
     
         $(".number_select").change(function(){
@@ -35,13 +46,52 @@ $(document).ready(function(){
             numberFound = $(this).val();
             siteNumber = $(this).parent().attr('data-site_number');
             
-            $("#nonecontainer"+siteNumber+"").remove();
-            //$("#nonenotes"+siteNumber+"").remove();
-            //$("#siteimage"+siteNumber+"").remove();
             
-            for(x = 1; x <= numberFound; x++){
-                $(this).parent().append("<select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'><input type='text' name='notes"+siteNumber+"["+x+"]' /></input><input type='file' name='image"+siteNumber+"["+x+"]' />");
+            if(numberFound === "0"){
+                $("#site"+siteNumber+"").append("<div id='nonecontainer"+siteNumber+"'><label for='nonenotes"+siteNumber+"'>Notes</label><input type='text' id='nonenotes"+siteNumber+"' name='nonenotes"+siteNumber+"' /><label for='siteimage"+siteNumber+"'>Upload an image of the site</label><input type='file' id='siteimage"+siteNumber+"' name='siteimage"+siteNumber+"' /></div>");
             };
+            
+
+            if(this['initiated' + siteNumber]){                
+                if(this['arrayLength' + siteNumber] > numberFound){
+                    for(z = this['arrayLength' + siteNumber]; z > numberFound; z--){
+                        $("#birdcontainer"+siteNumber+""+z+"").remove();
+                        this['inputArray' + siteNumber].pop();
+                    };
+                    this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
+                }
+                else{
+                    $("#nonecontainer"+siteNumber+"").remove();
+                    
+                    elementsAdd = numberFound - this['arrayLength' + siteNumber];
+                    
+                    for(y = 1; y <= elementsAdd; y++){
+                        x = this['arrayLength' + siteNumber] + y;
+                        
+                        newInput = ("<div id='birdcontainer"+siteNumber+""+x+"'><select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'><input type='text' name='notes"+siteNumber+"["+x+"]' /></input><input type='file' name='image"+siteNumber+"["+x+"]' /></div>");
+                        
+                        $(this).parent().append(newInput);
+                        this['inputArray' + siteNumber].push(newInput);   
+                    };
+                    
+                    this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
+                };
+            }
+            else{
+                
+                $("#nonecontainer"+siteNumber+"").remove();
+                
+                this['initiated' + siteNumber] = true;
+                this['inputArray' + siteNumber] = [];
+            
+                for(x = 1; x <= numberFound; x++){
+                    this['inputArray' + siteNumber].push("<div id='birdcontainer"+siteNumber+""+x+"'><select name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'><input type='text' name='notes"+siteNumber+"["+x+"]' /></input><input type='file' name='image"+siteNumber+"["+x+"]' /></div>");
+                };
+                
+                this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
+                $(this).parent().append(this['inputArray' + siteNumber]);
+            };
+
         });
 
     });
