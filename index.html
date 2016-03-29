@@ -7,6 +7,11 @@
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="PSFIST.js"></script>
     <link rel="stylesheet" href="stylesheet.css" />
+    
+    <!--DATEPICKER-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 </head>
     
@@ -21,8 +26,23 @@
                 <label for="name">Volunteer Name</label>
                 <input type="text" id="name" name="name" class="form_field" autofocus />
                 
+                <label for='date'>Survey Date</label>
+                <input type="text" id="date" name="date" placeholder="Please select from the calendar" readonly="true">
+                
                 <label for='duration'>Survey Duration (minutes)</label>
                 <select id="duration" name="duration"></select>
+                
+                <label for='weather'>Weather</label>
+                <select id="weather" name="weather">
+                    <option value="unchanged" disabled selected>Select weather</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="partly_cloudy">Partly cloudy</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="light rain">Light rain</option>
+                    <option value="rain">Rain</option>
+                    <option value="fog">Fog</option>
+                    <option value="not_collected">Not collected</option>
+                </select>
 
                 <label for="route_select">Route</label>
                 <select id="route_select" name="route" class="form_field">
