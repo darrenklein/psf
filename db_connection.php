@@ -12,6 +12,10 @@ $sql = '';
 //SURVEY INFO
 $name = $_POST['name'];
 $date = $_POST['date'];
+$hour = $_POST['hour'];
+$minute = $_POST['minute'];
+$ampm = $_POST['ampm'];
+$startTime = $hour.":".$minute.$ampm;
 $duration = $_POST['duration'];
 $weather = $_POST['weather'];
 $route = $_POST['route'];
@@ -40,8 +44,8 @@ foreach($site_array as $siteNumber => $value){
             };
         }
         
-        $sql .= "INSERT INTO PSFIST (volunteer, date, duration, weather, route, site, species, deadinjured, notes, image_url)
-        VALUES ('$name', '$date','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
+        $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, notes, image_url)
+        VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
     }
     else{
         $species_array[$siteNumber] = $_POST['species'.$siteNumber.''];
@@ -65,8 +69,8 @@ foreach($site_array as $siteNumber => $value){
                 $image_url = "NULL";
             };
 
-            $sql .= "INSERT INTO PSFIST (volunteer, date, duration, weather, route, site, species, deadinjured, notes, image_url)
-            VALUES ('$name', '$date','$duration', '$weather','$route', '$siteNumber', '$species', '$deadinjured', '$notes' ,'$image_url');";
+            $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, notes, image_url)
+            VALUES ('$name', '$date','$duration', '$startTime', '$weather','$route', '$siteNumber', '$species', '$deadinjured', '$notes' ,'$image_url');";
 
         };
     };
