@@ -44,18 +44,22 @@ foreach($site_array as $siteNumber => $value){
             };
         }
         
-        $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, notes, image_url)
-        VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
+        $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, sex, age, notes, image_url)
+        VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
     }
     else{
         $species_array[$siteNumber] = $_POST['species'.$siteNumber.''];
         $deadinjured_array[$siteNumber] = $_POST['deadinjured'.$siteNumber.''];
+        $sex_array[$siteNumber] = $_POST['sex'.$siteNumber.''];
+        $age_array[$siteNumber] = $_POST['age'.$siteNumber.''];
         $notes_array[$siteNumber] = $_POST['notes'.$siteNumber.''];
         $image_array[$siteNumber] = $_FILES['image'.$siteNumber.'']['tmp_name'];
 
         foreach($species_array[$siteNumber] as $key => $species){
 
             $deadinjured = $deadinjured_array[$siteNumber][$key];
+            $sex = $sex_array[$siteNumber][$key];
+            $age = $age_array[$siteNumber][$key];
             $notes = $notes_array[$siteNumber][$key];
 
             if($image_array[$siteNumber][$key]){
@@ -69,8 +73,8 @@ foreach($site_array as $siteNumber => $value){
                 $image_url = "NULL";
             };
 
-            $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, notes, image_url)
-            VALUES ('$name', '$date','$startTime', '$duration', '$weather','$route', '$siteNumber', '$species', '$deadinjured', '$notes' ,'$image_url');";
+            $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, sex, age, notes, image_url)
+            VALUES ('$name', '$date','$startTime', '$duration', '$weather','$route', '$siteNumber', '$species', '$deadinjured', '$sex', '$age', '$notes', '$image_url');";
 
         };
     };
