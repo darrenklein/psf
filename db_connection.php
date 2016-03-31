@@ -70,7 +70,7 @@ foreach($site_array as $siteNumber => $value){
             };
 
             $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, notes, image_url)
-            VALUES ('$name', '$date','$duration', '$startTime', '$weather','$route', '$siteNumber', '$species', '$deadinjured', '$notes' ,'$image_url');";
+            VALUES ('$name', '$date','$startTime', '$duration', '$weather','$route', '$siteNumber', '$species', '$deadinjured', '$notes' ,'$image_url');";
 
         };
     };
