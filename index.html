@@ -4,6 +4,8 @@
 <head>
 
     <title>Project Safe Flight</title>
+    <link rel="shortcut icon" href="files/nyca_fav_icon.ico">
+    
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="PSFIST.js"></script>
     <link rel="stylesheet" href="stylesheet.css" />
@@ -17,51 +19,69 @@
     
 <body>
     
+    <div id="header">
+        <img src="files/nyca_banner.jpg" id="banner"></br>
+        <div id="header_text">Project Safe Flight Collision Monitoring</div>
+    </div>
+    
     <form action="db_connection.php" method="post" enctype="multipart/form-data">
     
         <div id="survey_info" class="form_page">
             Survey info
             
             <fieldset id="survey_info_container">
-                <label for="name">Volunteer Name</label>
-                <input type="text" id="name" name="name" class="form_field" autofocus />
+                <div class="entry_field">
+                    <label for="name">Volunteer Name</label>
+                    <input type="text" id="name" name="name" class="form_field" autofocus />
+                </div>
                 
-                <label for='date'>Survey Date</label>
-                <input type="text" id="date" name="date" placeholder="Please select from the calendar" readonly="true">
+                <div class="entry_field">
+                    <label for='date'>Survey Date</label>
+                    <input type="text" id="date" name="date" placeholder="Please select from the calendar" readonly="true">
+                </div>
+                    
+                <div class="entry_field">
+                    <label for='hour'>Survey Time</label>
+                    <select id="hour" name="hour"></select> : <select id="minute" name="minute"></select> <select id="ampm" name="ampm"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
+                </div>
                 
-                <label for='hour'>Survey Time</label>
-                <select id="hour" name="hour"></select> : <select id="minute" name="minute"></select> <select id="ampm" name="ampm"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
+                <div class="entry_field">
+                    <label for='duration'>Survey Duration (minutes)</label>
+                    <select id="duration" name="duration"></select>
+                </div>
                 
-                <label for='duration'>Survey Duration (minutes)</label>
-                <select id="duration" name="duration"></select>
-                
-                <label for='weather'>Weather</label>
-                <select id="weather" name="weather">
-                    <option value="unchanged" disabled selected>Select weather</option>
-                    <option value="sunny">Sunny</option>
-                    <option value="partly_cloudy">Partly cloudy</option>
-                    <option value="cloudy">Cloudy</option>
-                    <option value="light rain">Light rain</option>
-                    <option value="rain">Rain</option>
-                    <option value="fog">Fog</option>
-                    <option value="not_collected">Not collected</option>
-                </select>
+                <div class="entry_field">
+                    <label for='weather'>Weather</label>
+                    <select id="weather" name="weather">
+                        <option value="unchanged" disabled selected>Select weather</option>
+                        <option value="sunny">Sunny</option>
+                        <option value="partly_cloudy">Partly cloudy</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="light rain">Light rain</option>
+                        <option value="rain">Rain</option>
+                        <option value="fog">Fog</option>
+                        <option value="not_collected">Not collected</option>
+                    </select>
+                </div>
 
-                <label for="route_select">Route</label>
-                <select id="route_select" name="route" class="form_field">
-                    <option class="route" value="unchanged" disabled selected>Select route</option>
-                    <option class="route" value="brooklyn_public_library_and_richard_meier_building" data-sites="2">Brooklyn Public Library &amp; Richard Meier Building</option>
-                    <option class="route" value="bryant_park" data-sites="4">Bryant Park</option>
-                    <option class="route" value="columbia_university" data-sites="2">Columbia University</option>
-                    <option class="route" value="exxon" data-sites="4">Exxon - 1251 6th Avenue</option>
-                    <option class="route" value="ford_foundation_building" data-sites="3">Ford Foundation Building</option>
-                    <option class="route" value="javits" data-sites="8">Javits</option>
-                    <option class="route" value="lic_court_square" data-sites="7">LIC - Court Square</option>
-                    <option class="route" value="metropolitan_museum_of_art" data-sites="7">Metropolitan Museum of Art</option>
-                    <option class="route" value="freedom_tower" data-sites="4">Freedom Tower</option>
-                    <option class="route" value="goldman_sachs" data-sites="3">Goldman Sachs - 200 West Street</option>
-                    <option class="route" value="wfc_brookfield_place" data-sites="18">WFC - Brookfield Place</option>
-                </select>
+                <div class="entry_field">
+                    <label for="route_select">Route</label>
+                    <select id="route_select" name="route" class="form_field">
+                        <option class="route" value="unchanged" disabled selected>Select route</option>
+                        <option class="route" value="brooklyn_public_library_and_richard_meier_building" data-sites="2">Brooklyn Public Library &amp; Richard Meier Building</option>
+                        <option class="route" value="bryant_park" data-sites="4">Bryant Park</option>
+                        <option class="route" value="columbia_university" data-sites="2">Columbia University</option>
+                        <option class="route" value="exxon" data-sites="4">Exxon - 1251 6th Avenue</option>
+                        <option class="route" value="ford_foundation_building" data-sites="3">Ford Foundation Building</option>
+                        <option class="route" value="javits" data-sites="8">Javits</option>
+                        <option class="route" value="lic_court_square" data-sites="7">LIC - Court Square</option>
+                        <option class="route" value="metropolitan_museum_of_art" data-sites="7">Metropolitan Museum of Art</option>
+                        <option class="route" value="freedom_tower" data-sites="4">Freedom Tower</option>
+                        <option class="route" value="goldman_sachs" data-sites="3">Goldman Sachs - 200 West Street</option>
+                        <option class="route" value="wfc_brookfield_place" data-sites="18">WFC - Brookfield Place</option>
+                    </select>
+                </div>
+                
             </fieldset>
         </div>
         
