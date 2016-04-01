@@ -199,114 +199,145 @@ $(document).ready(function(){
                         id: 'birdcontainer'+siteNumber+''+x+''
                         });
         
-        speciesSelect = $("<select/>", {
-                        text: 'Select',
-                        class: 'entry_field',
-                        id: 'species'+siteNumber+''+x+'',
-                        name: 'species'+siteNumber+'['+x+']'
-                        }).append(speciesList);
-        
-        dead = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'dead'+siteNumber+''+x+'',
-                name: 'deadinjured'+siteNumber+'['+x+']',
-                value: 'dead',
-                checked: true
-                });
-        
-        injured = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'injured'+siteNumber+''+x+'',
-                name: 'deadinjured'+siteNumber+'['+x+']',
-                value: 'injured'
-                });
-        
-        male = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'male'+siteNumber+''+x+'',
-                name: 'sex'+siteNumber+'['+x+']',
-                value: 'male'
-                });
-        
-        female = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'male'+siteNumber+''+x+'',
-                name: 'sex'+siteNumber+'['+x+']',
-                value: 'female'
-                });
-        
-        sexUnknown = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'sexUnknown'+siteNumber+''+x+'',
-                name: 'sex'+siteNumber+'['+x+']',
-                value: 'unknown',
-                checked: true
-                });
-        
-        adult = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'adult'+siteNumber+''+x+'',
-                name: 'age'+siteNumber+'['+x+']',
-                value: 'adult'
-                });
-        
-        juvenile = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'juvenile'+siteNumber+''+x+'',
-                name: 'age'+siteNumber+'['+x+']',
-                value: 'juvenile'
-                });
-        
-        ageUnknown = $("<input/>", {
-                class: 'entry_field',
-                type: 'radio',
-                id: 'ageUnknown'+siteNumber+''+x+'',
-                name: 'age'+siteNumber+'['+x+']',
-                value: 'unknown',
-                checked: true
-                });
-        
-        actionSelect = $("<select/>", {
-                        text: 'Select',
-                        class: 'entry_field',
-                        id: 'action'+siteNumber+''+x+'',
-                        name: 'action'+siteNumber+'['+x+']'
-                        }).append(actionList);
+        inputContainer = $("<div/>", {
+                        class: 'entry_field'
+                        });
         
         
-        notes = $("<input/>", {
-                class: 'entry_field',
-                type: 'text',
-                id: 'notes'+siteNumber+''+x+'',
-                name: 'notes'+siteNumber+'['+x+']'
-                });
+            speciesContainer = inputContainer;
         
-        image = $("<input/>", {
-                class: 'entry_field',
-                type: 'file',
-                id: 'image'+siteNumber+''+x+'',
-                name: 'image'+siteNumber+'['+x+']'
-                });
+                speciesSelect = $("<select/>", {
+                                text: 'Select',
+                                id: 'species'+siteNumber+''+x+'',
+                                name: 'species'+siteNumber+'['+x+']'
+                                }).append(speciesList);
+            
+                speciesContainer.append(speciesSelect);
         
-        clear = $("<div/>", {
-                html: 'Remove image',
-                id: 'clear"+siteNumber+""+x+"',
-                on: {
-                        click: function(){
-                            file = $('#image'+siteNumber+''+x+'');
-                            file.replaceWith(file = file.clone(true));
-                        }  
-                    }
-                });
+        
+            deadInjuredContainer = inputContainer;
 
-        return birdContainer.append(speciesSelect).append(dead).append(injured).append(male).append(female).append(sexUnknown).append(adult).append(juvenile).append(ageUnknown).append(actionSelect).append(notes).append(image).append(clear);
+                dead = $("<input/>", {
+                        type: 'radio',
+                        id: 'dead'+siteNumber+''+x+'',
+                        name: 'deadinjured'+siteNumber+'['+x+']',
+                        value: 'dead',
+                        checked: true
+                        });
+
+                injured = $("<input/>", {
+                        type: 'radio',
+                        id: 'injured'+siteNumber+''+x+'',
+                        name: 'deadinjured'+siteNumber+'['+x+']',
+                        value: 'injured'
+                        });
+        
+                deadInjuredContainer.append(dead);
+                deadInjuredContainer.append(injured);
+        
+        
+            sexContainer = inputContainer;
+
+                male = $("<input/>", {
+                        type: 'radio',
+                        id: 'male'+siteNumber+''+x+'',
+                        name: 'sex'+siteNumber+'['+x+']',
+                        value: 'male'
+                        });
+
+                female = $("<input/>", {
+                        type: 'radio',
+                        id: 'female'+siteNumber+''+x+'',
+                        name: 'sex'+siteNumber+'['+x+']',
+                        value: 'female'
+                        });
+
+                sexUnknown = $("<input/>", {
+                        type: 'radio',
+                        id: 'sexUnknown'+siteNumber+''+x+'',
+                        name: 'sex'+siteNumber+'['+x+']',
+                        value: 'unknown',
+                        checked: true
+                        });
+        
+                sexContainer.append(male);
+                sexContainer.append(female);
+                sexContainer.append(sexUnknown);
+        
+        
+            ageContainer = inputContainer;
+
+                adult = $("<input/>", {
+                        type: 'radio',
+                        id: 'adult'+siteNumber+''+x+'',
+                        name: 'age'+siteNumber+'['+x+']',
+                        value: 'adult'
+                        });
+
+                juvenile = $("<input/>", {
+                        type: 'radio',
+                        id: 'juvenile'+siteNumber+''+x+'',
+                        name: 'age'+siteNumber+'['+x+']',
+                        value: 'juvenile'
+                        });
+
+                ageUnknown = $("<input/>", {
+                        type: 'radio',
+                        id: 'ageUnknown'+siteNumber+''+x+'',
+                        name: 'age'+siteNumber+'['+x+']',
+                        value: 'unknown',
+                        checked: true
+                        });
+        
+                ageContainer.append(adult);
+                ageContainer.append(juvenile);
+                ageContainer.append(ageUnknown);
+        
+            
+            actionContainer = inputContainer;
+
+                actionSelect = $("<select/>", {
+                                id: 'action'+siteNumber+''+x+'',
+                                name: 'action'+siteNumber+'['+x+']'
+                                }).append(actionList);
+
+                actionContainer.append(actionSelect);
+        
+
+            notesContainer = inputContainer;
+        
+                notes = $("<input/>", {
+                        type: 'text',
+                        id: 'notes'+siteNumber+''+x+'',
+                        name: 'notes'+siteNumber+'['+x+']'
+                        });
+
+                notesContainer.append(notes);
+        
+        
+            imageContainer = inputContainer;
+
+                image = $("<input/>", {
+                        type: 'file',
+                        id: 'image'+siteNumber+''+x+'',
+                        name: 'image'+siteNumber+'['+x+']'
+                        });
+
+                clear = $("<div/>", {
+                        html: 'Remove image',
+                        id: 'clear'+siteNumber+''+x+'',
+                        on: {
+                                click: function(){
+                                    file = $('#image'+siteNumber+''+x+'');
+                                    file.replaceWith(file = file.clone(true));
+                                }  
+                            }
+                        });
+        
+                imageContainer.append(image);
+                imageContainer.append(clear);
+        
+        return birdContainer.append(speciesContainer).append(deadInjuredContainer).append(sexContainer).append(ageContainer).append(actionContainer).append(notesContainer).append(imageContainer);
         
     };
     
