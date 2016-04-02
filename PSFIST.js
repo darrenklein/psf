@@ -45,8 +45,63 @@ $(document).ready(function(){
 
     
     //CREATES THE BASIC SITE FIELDS - NO BIRDS FOUND AT SITE
-    function noneContainer(siteNumber){
-        return ("<div id='nonecontainer"+siteNumber+"'><div class='entry_field'><label for='nonenotes"+siteNumber+"'>Notes</label><input type='text' id='nonenotes"+siteNumber+"' name='nonenotes"+siteNumber+"' /></div><div class='entry_field'><label for='siteimage"+siteNumber+"'>Attach an image</label><input type='file' id='siteimage"+siteNumber+"' name='siteimage"+siteNumber+"' /></div></div>");  
+    function noneInput(siteNumber){
+        
+                noneContainer = $("<div/>", {
+                        id: 'nonecontainer'+siteNumber+''
+                        });
+        
+                    noneNotesContainer = $("<div/>", {
+                                    class: 'entry_field'
+                                    });
+                    siteImageContainer = $("<div/>", {
+                                    class: 'entry_field'
+                                    });
+        
+        
+        
+                        noneNotes = $("<input/>", {
+                                    type: 'text',
+                                    id: 'nonenotes'+siteNumber+'',
+                                    name: 'nonenotes'+siteNumber+''
+                                    });
+        
+                        noneNotesLabel = $("<label/>", {
+                                        text: 'Notes',
+                                        for: 'nonenotes'+siteNumber+''
+                                        }).append(noneNotes);
+
+                        siteImage = $("<input/>", {
+                                    type: 'file',
+                                    id: 'siteimage'+siteNumber+'',
+                                    name: 'siteimage'+siteNumber+''
+                                    });
+        
+                        siteImageLabel = $("<label/>", {
+                                    text: 'Attach an image',
+                                    for: 'image'+siteNumber+''
+                                    }).append(siteImage);
+        
+                        clear = $("<div/>", {
+                                html: 'Remove image',
+                                id: 'clear'+siteNumber+'',
+                                on: {
+                                    click: function(){
+                                        file = $('#siteimage'+siteNumber+'');
+                                        file.replaceWith(file = file.clone(true));
+                                    }  
+                                }
+                            });
+        
+        
+                    
+                noneNotesContainer.append(noneNotesLabel);
+                siteImageContainer.append(siteImageLabel);
+                siteImageContainer.append(clear);
+        
+            return noneContainer.append(noneNotesContainer).append(siteImageContainer);
+        
+        
     };
     
     
@@ -54,8 +109,6 @@ $(document).ready(function(){
     
     //CREATE INPUT FIELDS FOR BIRDS FOUND
     function speciesInput(siteNumber, x){
-        
-       /* return ("<div id='birdcontainer"+siteNumber+""+x+"'><div class='entry_field'><label for='species"+siteNumber+""+x+"'>Select species</label><select id='species"+siteNumber+""+x+"' name='species"+siteNumber+"["+x+"]'>"+speciesList+"</select></div><div class='entry_field'><label for='dead"+siteNumber+""+x+"'>Dead</label><input type='radio' id='dead"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='dead' checked></input><label for='injured"+siteNumber+""+x+"'>Injured</label><input type='radio' id='injured"+siteNumber+""+x+"' name='deadinjured"+siteNumber+"["+x+"]' value='injured'></div><div class='entry_field'><label for='male"+siteNumber+""+x+"'>Male</label><input type='radio' id='male"+siteNumber+""+x+"' name='sex"+siteNumber+"["+x+"]' value='male'></input><label for='female"+siteNumber+""+x+"'>Female</label><input type='radio' id='female"+siteNumber+""+x+"' name='sex"+siteNumber+"["+x+"]' value='female'></input><label for='unknownSex"+siteNumber+""+x+"'>Unknown</label><input type='radio' id='unknownSex"+siteNumber+""+x+"' name='sex"+siteNumber+"["+x+"]' value='unknown' checked></input></div><div class='entry_field'><label for='adult"+siteNumber+""+x+"'>Adult</label><input type='radio' id='adult"+siteNumber+""+x+"' name='age"+siteNumber+"["+x+"]' value='adult'></input><label for='juvenile"+siteNumber+""+x+"'>Juvenile</label><input type='radio' id='juvenile"+siteNumber+""+x+"' name='age"+siteNumber+"["+x+"]' value='juvenile'></input><label for='unknownAge"+siteNumber+""+x+"'>Unknown</label><input type='radio' id='unknownAge"+siteNumber+""+x+"' name='age"+siteNumber+"["+x+"]' value='unknown' checked></input></div><div class='entry_field'><label for='action"+siteNumber+""+x+"'>Action</label><select id='action"+siteNumber+""+x+"' name='action"+siteNumber+"["+x+"]'><option disabled selected>Select action</option><option value='collected'>Collected</option><option value='no_change'>No change</option><option value='captured_and_released'>Captured and released</option><option value='transported_to_rehabber'>Transported to rehabber</option><option value='other'>Other (Describe in 'Notes')</option></select></div><div class='entry_field'><label for='notes"+siteNumber+""+x+"'>Notes</label><input type='text' id='notes"+siteNumber+""+x+"' name='notes"+siteNumber+"["+x+"]' /></input></div><div class='entry_field'><label for='image"+siteNumber+""+x+"'>Attach an image</label><input type='file' id='image"+siteNumber+""+x+"' name='image"+siteNumber+"["+x+"]' /><div id='clear"+siteNumber+""+x+"'>Remove image</div></div></div>");*/
         
         
         birdContainer = $("<div/>", {
@@ -86,10 +139,15 @@ $(document).ready(function(){
                             });
         
 
-                    speciesSelect = $("<select/>", {
+                    species = $("<select/>", {
                                     id: 'species'+siteNumber+''+x+'',
                                     name: 'species'+siteNumber+'['+x+']'
                                     }).append(speciesList);
+        
+                    speciesLabel = $("<label/>", {
+                                text: 'Species',
+                                for: 'species'+siteNumber+''+x+''
+                                }).append(species);
 
                     dead = $("<input/>", {
                             type: 'radio',
@@ -98,6 +156,11 @@ $(document).ready(function(){
                             value: 'dead',
                             checked: true
                             });
+        
+                    deadLabel = $("<label/>", {
+                                text: 'Dead',
+                                for: 'dead'+siteNumber+''+x+''
+                                }).append(dead);
 
                     injured = $("<input/>", {
                             type: 'radio',
@@ -105,6 +168,11 @@ $(document).ready(function(){
                             name: 'deadinjured'+siteNumber+'['+x+']',
                             value: 'injured'
                             });
+        
+                    injuredLabel = $("<label/>", {
+                                text: 'Injured',
+                                for: 'injured'+siteNumber+''+x+''
+                                }).append(injured);
 
                     male = $("<input/>", {
                             type: 'radio',
@@ -112,6 +180,11 @@ $(document).ready(function(){
                             name: 'sex'+siteNumber+'['+x+']',
                             value: 'male'
                             });
+        
+                    maleLabel = $("<label/>", {
+                                text: 'Male',
+                                for: 'male'+siteNumber+''+x+''
+                                }).append(male);
 
                     female = $("<input/>", {
                             type: 'radio',
@@ -119,6 +192,11 @@ $(document).ready(function(){
                             name: 'sex'+siteNumber+'['+x+']',
                             value: 'female'
                             });
+        
+                    femaleLabel = $("<label/>", {
+                                text: 'Female',
+                                for: 'female'+siteNumber+''+x+''
+                                }).append(female);
 
                     sexUnknown = $("<input/>", {
                             type: 'radio',
@@ -127,6 +205,11 @@ $(document).ready(function(){
                             value: 'unknown',
                             checked: true
                             });
+        
+                    sexUnknownLabel = $("<label/>", {
+                                    text: 'Unknown',
+                                    for: 'sexUnknown'+siteNumber+''+x+''
+                                    }).append(sexUnknown);
 
                     adult = $("<input/>", {
                             type: 'radio',
@@ -146,6 +229,11 @@ $(document).ready(function(){
                             name: 'age'+siteNumber+'['+x+']',
                             value: 'juvenile'
                             });
+        
+                    juvenileLabel = $("<label/>", {
+                                    text: 'Juvenile',
+                                    for: 'juvenile'+siteNumber+''+x+''
+                                    }).append(juvenile);
 
                     ageUnknown = $("<input/>", {
                             type: 'radio',
@@ -154,23 +242,44 @@ $(document).ready(function(){
                             value: 'unknown',
                             checked: true
                             });
+        
+                    ageUnknownLabel = $("<label/>", {
+                                text: 'Unknown',
+                                for: 'ageUnknown'+siteNumber+''+x+''
+                                }).append(ageUnknown);
 
-                    actionSelect = $("<select/>", {
+                    action = $("<select/>", {
                                     id: 'action'+siteNumber+''+x+'',
                                     name: 'action'+siteNumber+'['+x+']'
                                     }).append(actionList);
+        
+                    actionLabel = $("<label/>", {
+                                text: 'Action',
+                                for: 'action'+siteNumber+''+x+''
+                                }).append(action);
 
                     notes = $("<input/>", {
                             type: 'text',
                             id: 'notes'+siteNumber+''+x+'',
                             name: 'notes'+siteNumber+'['+x+']'
                             });
+        
+                    notesLabel = $("<label/>", {
+                                text: 'Notes',
+                                for: 'notes'+siteNumber+''+x+''
+                                }).append(notes);
 
                     image = $("<input/>", {
                             type: 'file',
                             id: 'image'+siteNumber+''+x+'',
                             name: 'image'+siteNumber+'['+x+']'
                             });
+        
+                    imageLabel = $("<label/>", {
+                                text: 'Attach an image',
+                                for: 'image'+siteNumber+''+x+''
+                                }).append(image);
+        
 
                     clear = $("<div/>", {
                             html: 'Remove image',
@@ -183,18 +292,18 @@ $(document).ready(function(){
                                 }
                             });
         
-                    speciesContainer.append(speciesSelect);
-                    deadInjuredContainer.append(dead);
-                    deadInjuredContainer.append(injured);
-                    sexContainer.append(male);
-                    sexContainer.append(female);
-                    sexContainer.append(sexUnknown);
+                    speciesContainer.append(speciesLabel);
+                    deadInjuredContainer.append(deadLabel);
+                    deadInjuredContainer.append(injuredLabel);
+                    sexContainer.append(maleLabel);
+                    sexContainer.append(femaleLabel);
+                    sexContainer.append(sexUnknownLabel);
                     ageContainer.append(adultLabel);
-                    ageContainer.append(juvenile);
-                    ageContainer.append(ageUnknown);
-                    actionContainer.append(actionSelect);
-                    notesContainer.append(notes);
-                    imageContainer.append(image);
+                    ageContainer.append(juvenileLabel);
+                    ageContainer.append(ageUnknownLabel);
+                    actionContainer.append(actionLabel);
+                    notesContainer.append(notesLabel);
+                    imageContainer.append(imageLabel);
                     imageContainer.append(clear);
         
         return birdContainer.append(speciesContainer).append(deadInjuredContainer).append(sexContainer).append(ageContainer).append(actionContainer).append(notesContainer).append(imageContainer);
@@ -215,7 +324,7 @@ $(document).ready(function(){
         
         for(i = 1; i <= siteCount; i++){
             $("#site_info_container").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select></div>");
-            $("#site"+i+"").append(noneContainer(i));
+            $("#site"+i+"").append(noneInput(i));
         };
         
         var siteNumber;
@@ -229,7 +338,7 @@ $(document).ready(function(){
             siteNumber = $(this).parent().attr('data-site_number');
             
             if(numberFound === "0"){
-                $("#site"+siteNumber+"").append(noneContainer(siteNumber));
+                $("#site"+siteNumber+"").append(noneInput(siteNumber));
             };
             
             if(this['initiated' + siteNumber]){                
