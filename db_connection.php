@@ -85,8 +85,8 @@ foreach($site_array as $siteNumber => $value){
 
 
 if ($conn->multi_query($sql) === TRUE) {
-    echo "MySQL thanks you";
     $conn->close();
+    header("Location:confirmation.html");
 };
 
 
