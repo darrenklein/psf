@@ -34,6 +34,8 @@ else{
     $site_array = $_POST['site'];
 
     foreach($site_array as $siteNumber => $value){
+        
+        $siteNumber = $conn->real_escape_string($siteNumber);
 
         if(isset($_POST['nonenotes'.$siteNumber.''])){
             $noneNotes = $conn->real_escape_string($_POST['nonenotes'.$siteNumber.'']);
@@ -68,17 +70,17 @@ else{
 
             foreach($species_array[$siteNumber] as $key => $species){
 
-                $deadinjured = $deadinjured_array[$siteNumber][$key];
-                $sex = $sex_array[$siteNumber][$key];
-                $age = $age_array[$siteNumber][$key];
-                $action = $action_array[$siteNumber][$key];
-                $notes = $notes_array[$siteNumber][$key];
+                $deadinjured = $conn->real_escape_string($deadinjured_array[$siteNumber][$key]);
+                $sex = $conn->real_escape_string($sex_array[$siteNumber][$key]);
+                $age = $conn->real_escape_string($age_array[$siteNumber][$key]);
+                $action = $conn->real_escape_string($action_array[$siteNumber][$key]);
+                $notes = $conn->real_escape_string($notes_array[$siteNumber][$key]);
 
                 if($image_array[$siteNumber][$key]){
                     $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
 
                     if(move_uploaded_file($image_array[$siteNumber][$key], $target_file)){
-                        $image_url = $target_file;
+                        $image_url = $conn->real_escape_string($target_file);
                     }
                 }
                 else{
