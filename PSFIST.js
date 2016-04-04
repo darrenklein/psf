@@ -318,12 +318,15 @@ $(document).ready(function(){
     
     //THE MAIN FUNCTION
     $(document).on("change", "#route_select", function(){
-        $("#site_info_container").empty();
+        
+        var routeName = $(this).find('option:selected').text();
+        
+        $("#sites").empty();
         
         siteCount = $(this.options[this.selectedIndex]).attr('data-sites');
         
         for(i = 1; i <= siteCount; i++){
-            $("#site_info_container").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select></div>");
+            $("#sites").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select></div>");
             $("#site"+i+"").append(noneInput(i));
         };
         
@@ -381,6 +384,31 @@ $(document).ready(function(){
                 $(this).parent().append(this['inputArray' + siteNumber]);
             };
         });
+        
+        
+        
+        //BUILDING THE SUMMARY...
+        $(document).on("click", "#next_to_summary", function(){
+            
+            //CLEAR THEM OUT TO BE FILLED/REFILLED
+            $(".summary_field").empty();
+            
+            name = document.getElementById("name").value;
+            date = document.getElementById("date").value;
+            time = document.getElementById("hour").value + ":" + document.getElementById("minute").value + document.getElementById("ampm").value
+            duration = document.getElementById("duration").value;
+            weather = $('#weather option:selected').text();
+            
+            //SURVEY FIELDS
+            $("#summary_name").append(name);
+            $("#summary_date").append(date);
+            $("#summary_time").append(time);
+            $("#summary_duration").append(duration + " minutes");
+            $("#summary_weather").append(weather);
+            $("#summary_route").append(routeName);
+
+        });
+        
     });
     
 });

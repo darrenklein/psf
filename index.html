@@ -91,14 +91,32 @@
         <div id="site_info" class="form_page">
             Site info
             
-            <fieldset id="site_info_container"></fieldset>
+            <fieldset id="site_info_container">
+                
+                <div id="sites"></div>
+                
+                <button type="button" id="previous_to_survey">Previous</button>
+                <button type="button" id="next_to_summary">Next</button>
+            </fieldset>
             
         </div>
     
         <div id="summary" class="form_page">
             Summary
             
-            <input type="submit" value="Submit" />
+            <fieldset id="summary_container">
+                
+                <div id="route-summary">
+                    Name: <div class="summary_field" id="summary_name"></div>
+                    Date: <div class="summary_field" id="summary_date"></div>
+                    Time: <div class="summary_field" id="summary_time"></div>
+                    Duration: <div class="summary_field" id="summary_duration"></div>
+                    Weather: <div class="summary_field" id="summary_weather"></div>
+                    Route: <div class="summary_field" id="summary_route"></div>
+                </div>
+
+                <input type="submit" value="Submit" />
+            </fieldset>
         </div>
     
     </form>
