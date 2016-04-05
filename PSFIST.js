@@ -326,7 +326,7 @@ $(document).ready(function(){
         siteCount = $(this.options[this.selectedIndex]).attr('data-sites');
         
         for(i = 1; i <= siteCount; i++){
-            $("#sites").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' name='site["+i+"]'>"+birdCounter+"</select></div>");
+            $("#sites").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' id='site"+i+"_number_found' name='site["+i+"]'>"+birdCounter+"</select></div>");
             $("#site"+i+"").append(noneInput(i));
         };
         
@@ -392,6 +392,7 @@ $(document).ready(function(){
             
             //CLEAR THEM OUT TO BE FILLED/REFILLED
             $(".summary_field").empty();
+            $("#site_summaries").empty();
             
             name = document.getElementById("name").value;
             date = document.getElementById("date").value;
@@ -406,6 +407,34 @@ $(document).ready(function(){
             $("#summary_duration").append(duration + " minutes");
             $("#summary_weather").append(weather);
             $("#summary_route").append(routeName);
+            
+            
+            for (i = 1; i <= siteCount; i++){
+                
+                summaryNumberFound = $("#site"+i+"_number_found").val();
+                
+                $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="site_summary_header">Site '+i+'</div></div>');
+                
+                if (summaryNumberFound === "0"){
+                    summaryNoneNotes = $("#nonenotes"+i+"").val();
+                    summarySiteImage = $("#siteimage"+i+"").val();
+                        
+                    if(summaryNoneNotes == ""){
+                        summaryNoneNotes = "No birds found at this site";
+                    };
+                    
+                    if(summarySiteImage == ""){
+                        summarySiteImage = "No image attached for this site";  
+                    }
+                    else{
+                        summarySiteImage = "Image attached!";
+                    }
+                        
+                    $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
+                };
+            
+            };
+            
 
         });
         
