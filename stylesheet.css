@@ -1,3 +1,29 @@
+body{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+}
+
+a{
+    color: #0EB2ED;
+}
+
+a:hover, a:focus{
+    color: #0E89ED;
+}
+
+#banner{
+    width: 475px;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+
+
 #survey_info{
     display: block;
 }

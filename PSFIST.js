@@ -319,9 +319,7 @@ $(document).ready(function(){
     
 
     
-    
- 
-    
+
     //THE MAIN FUNCTION
     $(document).on("change", "#route", function(){
         
