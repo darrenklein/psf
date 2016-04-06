@@ -39,7 +39,7 @@ $(document).ready(function(){
     
     
     //SPECIES LIST
-    var speciesList = "<option value='unchanged' disabled selected>Select species</option><option value='unknown'>unknown</option><option value='other'>other (describe in 'Notes')</option><option value='bat sp.'>bat sp.</option><option value='flycatcher sp.'>flycatcher sp.</option><option value='gull sp.'>gull sp.</option><option value='kinglet sp.'>kinglet sp.</option><option value='owl sp.'>owl sp.</option><option value='sparrow sp.'>sparrow sp.</option><option value='thrush sp.'>thrush sp.</option><option value='warbler sp.'>warbler sp.</option><option value='woodpecker sp.'>woodpecker sp.</option><option value='wren sp.'>wren sp.</option><option value='Alder Flycatcher'>Alder Flycatcher</option><option value='American Black Duck'>American Black Duck</option><option value='American Coot'>American Coot</option><option value='American Goldfinch'>American Goldfinch</option><option value='American Kestrel'>American Kestrel</option><option value='American Redstart'>American Redstart</option><option value='American Robin'>American Robin</option><option value='American Woodcock'>American Woodcock</option><option value='Baltimore Oriole'>Baltimore Oriole</option><option value='Barn Swallow'>Barn Swallow</option><option value='Bay-Breasted Warbler'>Bay-Breasted Warbler</option><option value='Belted Kingfisher'>Belted Kingfisher</option><option value='Black-and-white Warbler'>Black-and-white Warbler</option><option value='Black-billed Cuckoo'>Black-billed Cuckoo</option><option value='Black-capped Chickadee'>Black-capped Chickadee</option><option value='Blackpoll Warbler'>Blackpoll Warbler</option><option value='Black-throated Blue Warbler'>Black-throated Blue Warbler</option><option value='Black-throated Green Warbler'>Black-throated Green Warbler</option><option value='Blue Jay'>Blue Jay</option><option value='Blue-headed Vireo'>Blue-headed Vireo</option><option value='Blue-winged Warbler'>Blue-winged Warbler</option><option value='Brown Creeper'>Brown Creeper</option><option value='Brown Thrasher'>Brown Thrasher</option><option value='Brown-headed Cowbird'>Brown-headed Cowbird</option><option value='Canada Warbler'>Canada Warbler</option><option value='Cape May Warbler'>Cape May Warbler</option><option value='Cedar Waxwing'>Cedar Waxwing</option><option value='Chestnut-sided Warbler'>Chestnut-sided Warbler</option><option value='Chipping Sparrow'>Chipping Sparrow</option><option value='Chuck-wills-widow'>Chuck-will's-widow</option><option value='Clapper Rail'>Clapper Rail</option><option value='Common Grackle'>Common Grackle</option><option value='Common Yellowthroat'>Common Yellowthroat</option><option value='Connecticut Warbler'>Connecticut Warbler</option><option value='Dark-eyed Junco'>Dark-eyed Junco</option><option value='Downy Woodpecker'>Downy Woodpecker</option><option value='Eastern Bluebird'>Eastern Bluebird</option><option value='Eastern Kingbird'>Eastern Kingbird</option><option value='Eastern Phoebe'>Eastern Phoebe</option><option value='Eastern Towhee'>Eastern Towhee</option><option value='Eastern Wood-pewee'>Eastern Wood-pewee</option><option value='European Starling'>European Starling</option><option value='Field Sparrow'>Field Sparrow</option><option value='Fox Sparrow'>Fox Sparrow</option><option value='Golden-crowned Kinglet'>Golden-crowned Kinglet</option><option value='Gray Catbird'>Gray Catbird</option><option value='Gray-cheeked Thrush'>Gray-cheeked Thrush</option><option value='Great Crested Flycatcher'>Great Crested Flycatcher</option><option value='Hermit Thrush'>Hermit Thrush</option><option value='Hooded Warbler'>Hooded Warbler</option><option value='House Finch'>House Finch</option><option value='House Sparrow'>House Sparrow</option><option value='House Wren'>House Wren</option><option value='Indigo Bunting'>Indigo Bunting</option><option value='Kentucky Warbler'>Kentucky Warbler</option><option value='Lazuli Bunting'>Lazuli Bunting</option><option value='Least Flycatcher'>Least Flycatcher</option><option value='Lincolns Sparrow'>Lincoln's Sparrow</option><option value='Louisiana Waterthrush'>Louisiana Waterthrush</option><option value='Magnolia Warbler'>Magnolia Warbler</option><option value='Marsh Wren'>Marsh Wren</option><option value='Mourning Dove'>Mourning Dove</option><option value='Mourning Warbler'>Mourning Warbler</option><option value='Northern Cardinal'>Northern Cardinal</option><option value='Northern Flicker'>Northern Flicker</option><option value='Northern Mockingbird'>Northern Mockingbird</option><option value='Northern Parula'>Northern Parula</option><option value='Northern Waterthrush'>Northern Waterthrush</option><option value='Olive-sided Flycatcher'>Olive-sided Flycatcher</option><option value='Orchard Oriole'>Orchard Oriole</option><option value='Osprey'>Osprey</option><option value='Ovenbird'>Ovenbird</option><option value='Palm Warbler'>Palm Warbler</option><option value='Peregrine Falcon'>Peregrine Falcon</option><option value='Pine Warbler'>Pine Warbler</option><option value='Prairie Warbler'>Prairie Warbler</option><option value='Prothonotary Warbler'>Prothonotary Warbler</option><option value='Purple Finch'>Purple Finch</option><option value='Red-headed Woodpecker'>Red-headed Woodpecker</option><option value='Red-bellied Woodpecker'>Red-bellied Woodpecker</option><option value='Red-breasted Nuthatch'>Red-breasted Nuthatch</option><option value='Red-eyed Vireo'>Red-eyed Vireo</option><option value='Red-tailed Hawk'>Red-tailed Hawk</option><option value='Rock Pigeon'>Rock Pigeon</option><option value='Rose-breasted Grosbeak'>Rose-breasted Grosbeak</option><option value='Ruby-crowned Kinglet'>Ruby-crowned Kinglet</option><option value='Ruby-throated Hummingbird'>Ruby-throated Hummingbird</option><option value='Savannah Sparrow'>Savannah Sparrow</option><option value='Scarlet Tanager'>Scarlet Tanager</option><option value='Seaside Sparrow'>Seaside Sparrow</option><option value='Song Sparrow'>Song Sparrow</option><option value='Sora'>Sora</option><option value='Swainsons Thrush'>Swainson's Thrush</option><option value='Swamp Sparrow'>Swamp Sparrow</option><option value='Tennessee Warbler'>Tennessee Warbler</option><option value='Tufted Titmouse'>Tufted Titmouse</option><option value='Veery'>Veery</option><option value='Virginia Rail'>Virginia Rail</option><option value='White-breasted Nuthatch'>White-breasted Nuthatch</option><option value='White-crowned Sparrow'>White-crowned Sparrow</option><option value='White-eyed Vireo'>White-eyed Vireo</option><option value='White-throated Sparrow'>White-throated Sparrow</option><option value='Willow Flycatcher'>Willow Flycatcher</option><option value='Wilsons Warbler'>Wilson's Warbler</option><option value='Winter Wren'>Winter Wren</option><option value='Wood Thrush'>Wood Thrush</option><option value='Worm-eating Warbler'>Worm-eating Warbler</option><option value='Yellow Warbler'>Yellow Warbler</option><option value='Yellow-bellied Flycatcher'>Yellow-bellied Flycatcher</option><option value='Yellow-bellied Sapsucker'>Yellow-bellied Sapsucker</option><option value='Yellow-billed Cuckoo'>Yellow-billed Cuckoo</option><option value='Yellow-breasted Chat'>Yellow-breasted Chat</option><option value='Yellow-rumped Warbler'>Yellow-rumped Warbler</option><option value='Yellow-throated Vireo'>Yellow-throated Vireo</option>";
+    var speciesList = "<option disabled selected>Select species</option><option value='unknown'>unknown</option><option value='other'>other (describe in 'Notes')</option><option value='bat sp.'>bat sp.</option><option value='flycatcher sp.'>flycatcher sp.</option><option value='gull sp.'>gull sp.</option><option value='kinglet sp.'>kinglet sp.</option><option value='owl sp.'>owl sp.</option><option value='sparrow sp.'>sparrow sp.</option><option value='thrush sp.'>thrush sp.</option><option value='warbler sp.'>warbler sp.</option><option value='woodpecker sp.'>woodpecker sp.</option><option value='wren sp.'>wren sp.</option><option value='Alder Flycatcher'>Alder Flycatcher</option><option value='American Black Duck'>American Black Duck</option><option value='American Coot'>American Coot</option><option value='American Goldfinch'>American Goldfinch</option><option value='American Kestrel'>American Kestrel</option><option value='American Redstart'>American Redstart</option><option value='American Robin'>American Robin</option><option value='American Woodcock'>American Woodcock</option><option value='Baltimore Oriole'>Baltimore Oriole</option><option value='Barn Swallow'>Barn Swallow</option><option value='Bay-Breasted Warbler'>Bay-Breasted Warbler</option><option value='Belted Kingfisher'>Belted Kingfisher</option><option value='Black-and-white Warbler'>Black-and-white Warbler</option><option value='Black-billed Cuckoo'>Black-billed Cuckoo</option><option value='Black-capped Chickadee'>Black-capped Chickadee</option><option value='Blackpoll Warbler'>Blackpoll Warbler</option><option value='Black-throated Blue Warbler'>Black-throated Blue Warbler</option><option value='Black-throated Green Warbler'>Black-throated Green Warbler</option><option value='Blue Jay'>Blue Jay</option><option value='Blue-headed Vireo'>Blue-headed Vireo</option><option value='Blue-winged Warbler'>Blue-winged Warbler</option><option value='Brown Creeper'>Brown Creeper</option><option value='Brown Thrasher'>Brown Thrasher</option><option value='Brown-headed Cowbird'>Brown-headed Cowbird</option><option value='Canada Warbler'>Canada Warbler</option><option value='Cape May Warbler'>Cape May Warbler</option><option value='Cedar Waxwing'>Cedar Waxwing</option><option value='Chestnut-sided Warbler'>Chestnut-sided Warbler</option><option value='Chipping Sparrow'>Chipping Sparrow</option><option value='Chuck-wills-widow'>Chuck-will's-widow</option><option value='Clapper Rail'>Clapper Rail</option><option value='Common Grackle'>Common Grackle</option><option value='Common Yellowthroat'>Common Yellowthroat</option><option value='Connecticut Warbler'>Connecticut Warbler</option><option value='Dark-eyed Junco'>Dark-eyed Junco</option><option value='Downy Woodpecker'>Downy Woodpecker</option><option value='Eastern Bluebird'>Eastern Bluebird</option><option value='Eastern Kingbird'>Eastern Kingbird</option><option value='Eastern Phoebe'>Eastern Phoebe</option><option value='Eastern Towhee'>Eastern Towhee</option><option value='Eastern Wood-pewee'>Eastern Wood-pewee</option><option value='European Starling'>European Starling</option><option value='Field Sparrow'>Field Sparrow</option><option value='Fox Sparrow'>Fox Sparrow</option><option value='Golden-crowned Kinglet'>Golden-crowned Kinglet</option><option value='Gray Catbird'>Gray Catbird</option><option value='Gray-cheeked Thrush'>Gray-cheeked Thrush</option><option value='Great Crested Flycatcher'>Great Crested Flycatcher</option><option value='Hermit Thrush'>Hermit Thrush</option><option value='Hooded Warbler'>Hooded Warbler</option><option value='House Finch'>House Finch</option><option value='House Sparrow'>House Sparrow</option><option value='House Wren'>House Wren</option><option value='Indigo Bunting'>Indigo Bunting</option><option value='Kentucky Warbler'>Kentucky Warbler</option><option value='Lazuli Bunting'>Lazuli Bunting</option><option value='Least Flycatcher'>Least Flycatcher</option><option value='Lincolns Sparrow'>Lincoln's Sparrow</option><option value='Louisiana Waterthrush'>Louisiana Waterthrush</option><option value='Magnolia Warbler'>Magnolia Warbler</option><option value='Marsh Wren'>Marsh Wren</option><option value='Mourning Dove'>Mourning Dove</option><option value='Mourning Warbler'>Mourning Warbler</option><option value='Northern Cardinal'>Northern Cardinal</option><option value='Northern Flicker'>Northern Flicker</option><option value='Northern Mockingbird'>Northern Mockingbird</option><option value='Northern Parula'>Northern Parula</option><option value='Northern Waterthrush'>Northern Waterthrush</option><option value='Olive-sided Flycatcher'>Olive-sided Flycatcher</option><option value='Orchard Oriole'>Orchard Oriole</option><option value='Osprey'>Osprey</option><option value='Ovenbird'>Ovenbird</option><option value='Palm Warbler'>Palm Warbler</option><option value='Peregrine Falcon'>Peregrine Falcon</option><option value='Pine Warbler'>Pine Warbler</option><option value='Prairie Warbler'>Prairie Warbler</option><option value='Prothonotary Warbler'>Prothonotary Warbler</option><option value='Purple Finch'>Purple Finch</option><option value='Red-headed Woodpecker'>Red-headed Woodpecker</option><option value='Red-bellied Woodpecker'>Red-bellied Woodpecker</option><option value='Red-breasted Nuthatch'>Red-breasted Nuthatch</option><option value='Red-eyed Vireo'>Red-eyed Vireo</option><option value='Red-tailed Hawk'>Red-tailed Hawk</option><option value='Rock Pigeon'>Rock Pigeon</option><option value='Rose-breasted Grosbeak'>Rose-breasted Grosbeak</option><option value='Ruby-crowned Kinglet'>Ruby-crowned Kinglet</option><option value='Ruby-throated Hummingbird'>Ruby-throated Hummingbird</option><option value='Savannah Sparrow'>Savannah Sparrow</option><option value='Scarlet Tanager'>Scarlet Tanager</option><option value='Seaside Sparrow'>Seaside Sparrow</option><option value='Song Sparrow'>Song Sparrow</option><option value='Sora'>Sora</option><option value='Swainsons Thrush'>Swainson's Thrush</option><option value='Swamp Sparrow'>Swamp Sparrow</option><option value='Tennessee Warbler'>Tennessee Warbler</option><option value='Tufted Titmouse'>Tufted Titmouse</option><option value='Veery'>Veery</option><option value='Virginia Rail'>Virginia Rail</option><option value='White-breasted Nuthatch'>White-breasted Nuthatch</option><option value='White-crowned Sparrow'>White-crowned Sparrow</option><option value='White-eyed Vireo'>White-eyed Vireo</option><option value='White-throated Sparrow'>White-throated Sparrow</option><option value='Willow Flycatcher'>Willow Flycatcher</option><option value='Wilsons Warbler'>Wilson's Warbler</option><option value='Winter Wren'>Winter Wren</option><option value='Wood Thrush'>Wood Thrush</option><option value='Worm-eating Warbler'>Worm-eating Warbler</option><option value='Yellow Warbler'>Yellow Warbler</option><option value='Yellow-bellied Flycatcher'>Yellow-bellied Flycatcher</option><option value='Yellow-bellied Sapsucker'>Yellow-bellied Sapsucker</option><option value='Yellow-billed Cuckoo'>Yellow-billed Cuckoo</option><option value='Yellow-breasted Chat'>Yellow-breasted Chat</option><option value='Yellow-rumped Warbler'>Yellow-rumped Warbler</option><option value='Yellow-throated Vireo'>Yellow-throated Vireo</option>";
     
     var actionList = "<option disabled selected>Select action</option><option value='collected'>Collected</option><option value='no_change'>No change</option><option value='captured_and_released'>Captured and released</option><option value='transported_to_rehabber'>Transported to rehabber</option><option value='other'>Other (Describe in 'Notes')</option>";
 
@@ -140,8 +140,11 @@ $(document).ready(function(){
         
 
                     species = $("<select/>", {
+                                    class: 'species_select',
                                     id: 'species'+siteNumber+''+x+'',
-                                    name: 'species'+siteNumber+'['+x+']'
+                                    name: 'species'+siteNumber+'['+x+']',
+                                    site: siteNumber,
+                                    bird: x
                                     }).append(speciesList);
         
                     speciesLabel = $("<label/>", {
@@ -249,8 +252,11 @@ $(document).ready(function(){
                                 }).append(ageUnknown);
 
                     action = $("<select/>", {
+                                    class: 'action_select',
                                     id: 'action'+siteNumber+''+x+'',
-                                    name: 'action'+siteNumber+'['+x+']'
+                                    name: 'action'+siteNumber+'['+x+']',
+                                    site: siteNumber,
+                                    bird: x
                                     }).append(actionList);
         
                     actionLabel = $("<label/>", {
@@ -317,7 +323,7 @@ $(document).ready(function(){
  
     
     //THE MAIN FUNCTION
-    $(document).on("change", "#route_select", function(){
+    $(document).on("change", "#route", function(){
         
         var routeName = $(this).find('option:selected').text();
         
@@ -387,108 +393,199 @@ $(document).ready(function(){
         
         
         
-        //BUILDING THE SUMMARY...
+        //SITE VALIDATIONS, BUILDING THE SUMMARY...
         $(document).on("click", "#next_to_summary", function(){
             
-            //CLEAR THEM OUT TO BE FILLED/REFILLED
-            $(".summary_field").empty();
-            $("#site_summaries").empty();
-            
-            name = document.getElementById("name").value;
-            date = document.getElementById("date").value;
-            time = document.getElementById("hour").value + ":" + document.getElementById("minute").value + document.getElementById("ampm").value
-            duration = document.getElementById("duration").value;
-            weather = $('#weather option:selected').text();
-            
-            //SURVEY FIELDS
-            $("#summary_name").append(name);
-            $("#summary_date").append(date);
-            $("#summary_time").append(time);
-            $("#summary_duration").append(duration + " minutes");
-            $("#summary_weather").append(weather);
-            $("#summary_route").append(routeName);
-            
-            
-            for (i = 1; i <= siteCount; i++){
+            //VALIDATION
+            var proceed = true;
                 
-                summaryNumberFound = $("#site"+i+"_number_found").val();
-                
-                $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="site_summary_header">Site '+i+'</div></div>');
-                
-                if (summaryNumberFound === "0"){
-                    summaryNoneNotes = $("#nonenotes"+i+"").val();
-                    summarySiteImage = $("#siteimage"+i+"").val();
+            $(".species_select").each(function() {
                         
-                    if(summaryNoneNotes == ""){
-                        summaryNoneNotes = "No birds found at this site";
-                    };
-                    
-                    if(summarySiteImage == ""){
-                        summarySiteImage = "No image attached for this site";  
+                if ($(this).val() == null){
+                    site = $(this).attr("site");
+                    bird = $(this).attr("bird");
+                    alert("Please select the species of bird "+bird+" at site "+site+"");
+                    proceed = false;
+                };
+            });
+                
+            $(".action_select").each(function(){
+                        
+                if ($(this).val() == null){
+                    site = $(this).attr("site");
+                    bird = $(this).attr("bird");  
+                    alert("Please select the action taken for bird "+bird+" at site "+site+"");
+                    proceed = false;
+                };   
+            });
+            
+            
+            if (proceed){
+                
+                //CLEAR THEM OUT TO BE FILLED/REFILLED
+                $(".summary_field").empty();
+                $("#site_summaries").empty();
+
+                name = document.getElementById("name").value;
+                date = document.getElementById("date").value;
+                time = document.getElementById("hour").value + ":" + document.getElementById("minute").value + document.getElementById("ampm").value
+                duration = document.getElementById("duration").value;
+                weather = $('#weather option:selected').text();
+
+                //SURVEY FIELDS
+                $("#summary_name").append(name);
+                $("#summary_date").append(date);
+                $("#summary_time").append(time);
+                $("#summary_duration").append(duration + " minutes");
+                $("#summary_weather").append(weather);
+                $("#summary_route").append(routeName);
+
+
+                for (i = 1; i <= siteCount; i++){
+
+                    summaryNumberFound = $("#site"+i+"_number_found").val();
+
+                    $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="site_summary_header">Site '+i+'</div></div>');
+
+                    if (summaryNumberFound === "0"){
+                        summaryNoneNotes = $("#nonenotes"+i+"").val();
+                        summarySiteImage = $("#siteimage"+i+"").val();
+
+                        if(summaryNoneNotes == ""){
+                            summaryNoneNotes = "No birds found at this site";
+                        };
+
+                        if(summarySiteImage == ""){
+                            summarySiteImage = "No image attached for this site";  
+                        }
+                        else{
+                            summarySiteImage = "Image attached!";
+                        };
+
+                        $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
                     }
+
                     else{
-                        summarySiteImage = "Image attached!";
+
+                        for (z = 1; z <= summaryNumberFound; z++){
+
+                            summarySpecies = $("#species"+i+""+z+"").val();
+
+                            if ($("#dead"+i+""+z+"").prop('checked')){
+                                summaryDeadInjured = "Dead";
+                            }
+                            else {
+                                summaryDeadInjured = "Injured";
+                            };
+
+                            if ($("#male"+i+""+z+"").prop('checked')){
+                                summarySex = "Male";
+                            }
+                            else if ($("#female"+i+""+z+"").prop('checked')){
+                                summarySex = "Female";
+                            }
+                            else{
+                                summarySex = "Unknown";
+                            };
+
+                            if ($("#adult"+i+""+z+"").prop('checked')){
+                                summaryAge = "Adult";
+                            }
+                            else if ($("#juvenile"+i+""+z+"").prop('checked')){
+                                summaryAge = "Juvenile";
+                            }
+                            else{
+                                summaryAge = "Unknown";
+                            };
+
+                            summaryAction = $("#action"+i+""+z+"").val();
+                            summaryNotes = $("#notes"+i+""+z+"").val();
+
+                            summaryImage = $("#image"+i+""+z+"").val();
+
+                            if (summaryImage == ""){
+                                summaryImage = "No image attached for this bird";
+                            }
+                            else{
+                                summaryImage = "Image attached!";  
+                            };
+
+                            $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
+
+                        };
+
                     };
-                        
-                    $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
-                }
-                
-                else{
-                    
-                    for (z = 1; z <= summaryNumberFound; z++){
-                        
-                        summarySpecies = $("#species"+i+""+z+"").val();
-                        
-                        if ($("#dead"+i+""+z+"").prop('checked')){
-                            summaryDeadInjured = "Dead";
-                        }
-                        else {
-                            summaryDeadInjured = "Injured";
-                        };
-                        
-                        if ($("#male"+i+""+z+"").prop('checked')){
-                            summarySex = "Male";
-                        }
-                        else if ($("#female"+i+""+z+"").prop('checked')){
-                            summarySex = "Female";
-                        }
-                        else{
-                            summarySex = "Unknown";
-                        };
-                        
-                        if ($("#adult"+i+""+z+"").prop('checked')){
-                            summaryAge = "Adult";
-                        }
-                        else if ($("#juvenile"+i+""+z+"").prop('checked')){
-                            summaryAge = "Juvenile";
-                        }
-                        else{
-                            summaryAge = "Unknown";
-                        };
-                        
-                        summaryAction = $("#action"+i+""+z+"").val();
-                        summaryNotes = $("#notes"+i+""+z+"").val();
-                        
-                        summaryImage = $("#image"+i+""+z+"").val();
-                        
-                        if (summaryImage == ""){
-                            summaryImage = "No image attached for this bird";
-                        }
-                        else{
-                            summaryImage = "Image attached!";  
-                        };
-                            
-                        $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
-                      
-                    };
-                    
+
                 };
             
             };
             
-
         });
         
+    });
+    
+    
+    
+    $("#next_to_sites").click(function(){
+        
+        //$('html, body').animate({ scrollTop: 0 }, 'fast');
+
+        //VALIDATION
+        name = $("#name").val()
+        date = $("#date").val();
+        hour = $("#hour").val();
+        minute = $("#minute").val();
+        amPm = $("#ampm").val();
+        duration = $("#duration").val();
+        weather = $("#weather").val();
+        route = $("#route").val();
+
+
+        if (name === "" || date === "" || hour == null || minute == null || amPm == null || duration == null || weather == null || route == null){
+
+            if (name === ""){
+                alert("Please enter your name");
+            }
+
+            if (date === ""){
+                alert("Please select a date");
+            }
+
+            if (hour == null){
+                alert("Please select an hour");
+            }
+
+            if (minute == null){
+                alert("Please select a minute");
+            }
+
+            if (amPm == null){
+                alert("Please select AM or PM");
+            }
+
+            if (duration == null){
+                alert("Please select duration");
+            }
+
+            if (weather == null){
+                alert("Please select weather");
+            }
+
+            if (route == null){
+                alert("Please select a route");
+            }
+        }
+
+            //ALL GOOD, MOVING ON
+            /*
+            else{
+                $("#global_entries").css("display", "none");
+                $("#sites").css("display", "block");
+                $("#previous").css("display", "block");
+                $("#next_summary").css("display", "block");
+                $("#next").css("display", "none");
+            };
+             */
     });
     
 });
