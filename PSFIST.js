@@ -428,9 +428,60 @@ $(document).ready(function(){
                     }
                     else{
                         summarySiteImage = "Image attached!";
-                    }
+                    };
                         
                     $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
+                }
+                
+                else{
+                    
+                    for (z = 1; z <= summaryNumberFound; z++){
+                        
+                        summarySpecies = $("#species"+i+""+z+"").val();
+                        
+                        if ($("#dead"+i+""+z+"").prop('checked')){
+                            summaryDeadInjured = "Dead";
+                        }
+                        else {
+                            summaryDeadInjured = "Injured";
+                        };
+                        
+                        if ($("#male"+i+""+z+"").prop('checked')){
+                            summarySex = "Male";
+                        }
+                        else if ($("#female"+i+""+z+"").prop('checked')){
+                            summarySex = "Female";
+                        }
+                        else{
+                            summarySex = "Unknown";
+                        };
+                        
+                        if ($("#adult"+i+""+z+"").prop('checked')){
+                            summaryAge = "Adult";
+                        }
+                        else if ($("#juvenile"+i+""+z+"").prop('checked')){
+                            summaryAge = "Juvenile";
+                        }
+                        else{
+                            summaryAge = "Unknown";
+                        };
+                        
+                        summaryAction = $("#action"+i+""+z+"").val();
+                        summaryNotes = $("#notes"+i+""+z+"").val();
+                        
+                        summaryImage = $("#image"+i+""+z+"").val();
+                        
+                        if (summaryImage == ""){
+                            summaryImage = "No image attached for this bird";
+                        }
+                        else{
+                            summaryImage = "Image attached!";  
+                        };
+                            
+                        $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
+                      
+                    };
+                    
                 };
             
             };
