@@ -25,15 +25,15 @@
     
     <div class="header">
         <img src="files/nyca_banner.jpg" id="banner"></br>
-        <div id="header_text">Project Safe Flight Collision Monitoring</div>
+        <div class="header_text">Project Safe Flight Collision Monitoring</div>
     </div>
     
     <div id="contents">
         
         <div id="instructions">Welcome to Project Safe Flight</br>
-            <ul>
+            <ul id="instruction_list">
                 <li>This is a three-page form - 'Survey Info', 'Site Info', 'Summary'</li>
-                <li>Navigate using the 'Next' and 'Previous' buttons</li>
+                <li>Navigate using the 'Next' and 'Previous' buttons at the bottom of each page</li>
                 <li>If you have any questions, please contact Debra Kriensky - <a href="mailto:dkriensky@nycaudubon.org" target="_top">dkriensky@nycaudubon.org</a></li>
                 <li>Report birds found outside of scheduled patrols at <a href="http://d-bird.org/">www.d-bird.org/</a></li>
             </ul>
@@ -45,7 +45,10 @@
 
             <div id="survey_info" class="form_page">
 
-                1. Survey Info
+                <div class="page_header">
+                    <div class="page_number">1. Survey Info</div>
+                    <div class="page_instructions">- All fields required</div>
+                </div>
 
                 <div class="entry_field">
                     <label for="name">Volunteer Name</label>
@@ -106,7 +109,13 @@
 
             <div id="site_info" class="form_page">
 
-                2. Site Info
+                <div class="page_header">
+                    <div class="page_number">2. Site Info</div>
+                    <div class="page_instructions">
+                        - All fields required except for 'Notes' and image attachments</br>
+                        - Please provide as much information as possible
+                    </div>
+                </div>
 
                 <div id="sites"></div>
 
@@ -117,7 +126,15 @@
 
             <div id="summary" class="form_page">
 
-                3. Summary
+                <div class="page_header">
+                    <div class="page_number">3. Summary</div>
+                    <div class="page_instructions">
+                        <strong style="font-size: 13px;">Your report is not yet submitted.</strong></br>
+                        - Please review the summary below - if you have to make changes, navigate using the 'Previous' and 'Next' buttons</br>
+                        - If the information is correct, click 'Submit' to finish your report</br>
+                        - To print a copy of this report, print this page before clicking 'Submit'
+                    </div>
+                </div>
 
                 <div id="route-summary">
                     Name: <div class="summary_field" id="summary_name"></div>

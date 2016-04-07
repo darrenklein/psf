@@ -478,7 +478,7 @@ $(document).ready(function(){
 
                         for (z = 1; z <= summaryNumberFound; z++){
 
-                            summarySpecies = $("#species"+i+""+z+"").val();
+                            summarySpecies = $("#species"+i+""+z+"").find('option:selected').text();
 
                             if ($("#dead"+i+""+z+"").prop('checked')){
                                 summaryDeadInjured = "Dead";
@@ -507,7 +507,7 @@ $(document).ready(function(){
                                 summaryAge = "Unknown";
                             };
 
-                            summaryAction = $("#action"+i+""+z+"").val();
+                            summaryAction = $("#action"+i+""+z+"").find('option:selected').text();
                             summaryNotes = $("#notes"+i+""+z+"").val();
 
                             summaryImage = $("#image"+i+""+z+"").val();
