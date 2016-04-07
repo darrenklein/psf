@@ -11,6 +11,9 @@
     
     <link rel="stylesheet" href="stylesheet.css" />
     
+    <!--GOOGLE FONT-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
+    
     <!--DATEPICKER-->
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -26,6 +29,15 @@
     </div>
     
     <div id="contents">
+        
+        <div id="instructions">Welcome to Project Safe Flight</br>
+            <ul>
+                <li>This is a three-page form - 'Survey Info', 'Site Info', 'Summary'</li>
+                <li>Navigate using the 'Next' and 'Previous' buttons</li>
+                <li>If you have any questions, please contact Debra Kriensky - <a href="mailto:dkriensky@nycaudubon.org" target="_top">dkriensky@nycaudubon.org</a></li>
+                <li>Report birds found outside of scheduled patrols at <a href="http://d-bird.org/">www.d-bird.org/</a></li>
+            </ul>
+        </div>
     
         <form id="psf_form" action="db_connection.php" method="post" enctype="multipart/form-data">
 
@@ -33,7 +45,7 @@
 
             <div id="survey_info" class="form_page">
 
-                1. Survey info
+                1. Survey Info
 
                 <div class="entry_field">
                     <label for="name">Volunteer Name</label>
@@ -94,7 +106,7 @@
 
             <div id="site_info" class="form_page">
 
-                2. Site info
+                2. Site Info
 
                 <div id="sites"></div>
 

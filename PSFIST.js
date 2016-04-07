@@ -84,6 +84,7 @@ $(document).ready(function(){
         
                         clear = $("<div/>", {
                                 html: 'Remove image',
+                                class: 'clear',
                                 id: 'clear'+siteNumber+'',
                                 on: {
                                     click: function(){
@@ -291,6 +292,7 @@ $(document).ready(function(){
 
                     clear = $("<div/>", {
                             html: 'Remove image',
+                            class: 'clear',
                             id: 'clear'+siteNumber+''+x+'',
                             on: {
                                     click: function(){
@@ -600,6 +602,17 @@ $(document).ready(function(){
     $("#previous_to_sites").click(function(){
         $("#summary").css("display", "none");
         $("#site_info").css("display", "block");
+    });
+    
+    $("#submit").click(function() {
+        $("#submit").hide();
+        $("#previous_to_sites").prop("disabled",true).css("cursor","initial");
+
+        $("#previous_to_sites").on('mouseover', function () {
+            $(this).css('background', '#F5753F');
+        });
+
+        $("#summary").append('<div id="submitting" class="navigation animated flash small-12 columns">Submitting...</div>');
     });
     
 });

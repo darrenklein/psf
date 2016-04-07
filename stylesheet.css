@@ -1,5 +1,5 @@
 body{
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 8px;
@@ -38,6 +38,13 @@ a:hover, a:focus{
     padding-right: 30px;
     border: solid #DDFCFC;
     border-radius: 4px;
+}
+
+#instructions{
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 25px;
+    margin-bottom: 25px;
 }
 
 #psf_form{
@@ -104,4 +111,50 @@ button, input[type="submit"]{
 
 #submit:hover{
     background: #59CC6D;
+}
+
+#submitting{
+    height: 24px;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    background: #59CC6D;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    border: 0px;
+}
+
+.animated { 
+    -webkit-animation-duration: 2.5s; 
+    animation-duration: 2.5s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-timing-function: ease-in-out; 
+    animation-timing-function: ease-in-out; 
+    animation-iteration-count:infinite; 
+    -webkit-animation-iteration-count:infinite; 
+} 
+
+@-webkit-keyframes flash { 
+    0%, 50%, 100% {opacity: 1;} 
+    25%, 75% {opacity: 0;} 
+} 
+
+@keyframes flash { 
+    0%, 50%, 100% {opacity: 1;} 
+    25%, 75% {opacity: 0;} 
+} 
+
+.flash { 
+    -webkit-animation-name: flash; 
+    animation-name: flash; 
+}
+
+.clear{
+    display: inline-block;
+    color: #E02B03;
+    cursor: pointer;
 }
