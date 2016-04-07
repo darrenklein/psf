@@ -3,6 +3,8 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 8px;
+    display: block;
+    margin: 8px 8px 8px 8px;
 }
 
 a{
@@ -18,11 +20,37 @@ a:hover, a:focus{
     margin-bottom: 5px;
 }
 
+#header_text{
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 0px 0px 0px 44px;
+}
 
+#contents{
+    display: block;
+    background-color: #FCFCFC;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid #DDFCFC;
+    border-radius: 4px;
+}
 
-
-
-
+#psf_form{
+    display: table;
+    position: relative;
+    width: 425px;
+    margin: 0 auto;
+    padding: 20px 45px 60px 45px;
+    background-color: #F5F2F2;
+    border: solid #BAD4D4;
+    border-radius: 4px;
+    font-size: 14px;
+}
 
 #survey_info{
     display: block;
@@ -36,5 +64,44 @@ a:hover, a:focus{
     display: none;
 }
 
-.entry_field{
+button, input[type="submit"]{
+    position: absolute;
+    color: #FFFFFF;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer; 
+}
+
+.next{
+    bottom: 20px;
+    right: 30px;
+    background: #3AAAF5;
+}
+
+.next:hover{
+    background: #3498DB;
+}
+
+.previous{
+    bottom: 20px;
+    left: 30px;
+    background: #F5753F;
+}
+
+.previous:hover{
+    background: #DB6938;
+}
+
+#submit{
+    bottom: 20px;
+    right: 30px;
+    background: #62DF69;
+}
+
+#submit:hover{
+    background: #59CC6D;
 }

@@ -8,6 +8,7 @@
     
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="PSFIST.js"></script>
+    
     <link rel="stylesheet" href="stylesheet.css" />
     
     <!--DATEPICKER-->
@@ -24,36 +25,36 @@
         <div id="header_text">Project Safe Flight Collision Monitoring</div>
     </div>
     
-    <form id="psf_form" action="db_connection.php" method="post" enctype="multipart/form-data">
-        
-        <input type="hidden" id="honey" name="honey"></input>
+    <div id="contents">
     
-        <div id="survey_info" class="form_page">
-            
-            <fieldset id="survey_info_container">
-                
+        <form id="psf_form" action="db_connection.php" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" id="honey" name="honey"></input>
+
+            <div id="survey_info" class="form_page">
+
                 1. Survey info
-                
+
                 <div class="entry_field">
                     <label for="name">Volunteer Name</label>
                     <input type="text" id="name" name="name" class="form_field" autofocus />
                 </div>
-                
+
                 <div class="entry_field">
                     <label for='date'>Survey Date</label>
                     <input type="text" id="date" name="date" placeholder="Please select from the calendar" readonly="true">
                 </div>
-                    
+
                 <div class="entry_field">
                     <label for='hour'>Survey Time</label>
                     <select id="hour" name="hour"></select> : <select id="minute" name="minute"></select> <select id="ampm" name="ampm"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
                 </div>
-                
+
                 <div class="entry_field">
                     <label for='duration'>Survey Duration (minutes)</label>
                     <select id="duration" name="duration"></select>
                 </div>
-                
+
                 <div class="entry_field">
                     <label for='weather'>Weather</label>
                     <select id="weather" name="weather">
@@ -85,33 +86,27 @@
                         <option class="route" value="wfc_brookfield_place" data-sites="18">WFC - Brookfield Place</option>
                     </select>
                 </div>
-                
+
                 <button type="button" class="next" id="next_to_sites">Next</button>
-                
-            </fieldset>
-        </div>
-        
-        
-        <div id="site_info" class="form_page">
-            
-            <fieldset id="site_info_container">
-                
+
+            </div>
+
+
+            <div id="site_info" class="form_page">
+
                 2. Site info
-                
+
                 <div id="sites"></div>
-                
+
                 <button type="button" class="previous" id="previous_to_survey">Previous</button>
                 <button type="button" class="next" id="next_to_summary">Next</button>
-            </fieldset>
-            
-        </div>
-    
-        <div id="summary" class="form_page">
-            
-            <fieldset id="summary_container">
                 
+            </div>
+
+            <div id="summary" class="form_page">
+
                 3. Summary
-                
+
                 <div id="route-summary">
                     Name: <div class="summary_field" id="summary_name"></div>
                     Date: <div class="summary_field" id="summary_date"></div>
@@ -123,12 +118,13 @@
                 </div>
 
                 <button type="button" class="previous" id="previous_to_sites">Previous</button>
-                <input type="submit" value="Submit" />
-            </fieldset>
-        </div>
+                <input type="submit" id="submit" value="Submit" />
+                
+            </div>
+
+        </form>
     
-    </form>
-    
+    </div>
 
     <div class="credit">Created for NYC Audubon by Darren Klein, 2015/2016</div>
 </body>
