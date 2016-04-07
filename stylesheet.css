@@ -29,11 +29,11 @@ a:hover, a:focus{
 }
 
 #site_info{
-    display: block;
+    display: none;
 }
 
 #summary{
-    display: block;
+    display: none;
 }
 
 .entry_field{

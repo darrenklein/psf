@@ -423,6 +423,10 @@ $(document).ready(function(){
                 //CLEAR THEM OUT TO BE FILLED/REFILLED
                 $(".summary_field").empty();
                 $("#site_summaries").empty();
+                
+                //HIDE SITES, DISPLAY SUMMARY
+                $("#site_info").css("display", "none");
+                $("#summary").css("display", "block");
 
                 name = document.getElementById("name").value;
                 date = document.getElementById("date").value;
@@ -527,7 +531,7 @@ $(document).ready(function(){
     $("#next_to_sites").click(function(){
         
         //$('html, body').animate({ scrollTop: 0 }, 'fast');
-
+        
         //VALIDATION
         name = $("#name").val()
         date = $("#date").val();
@@ -573,17 +577,23 @@ $(document).ready(function(){
                 alert("Please select a route");
             }
         }
+        else{
+            $("#survey_info").css("display", "none");
+            $("#site_info").css("display", "block");
+        };
 
-            //ALL GOOD, MOVING ON
-            /*
-            else{
-                $("#global_entries").css("display", "none");
-                $("#sites").css("display", "block");
-                $("#previous").css("display", "block");
-                $("#next_summary").css("display", "block");
-                $("#next").css("display", "none");
-            };
-             */
+    });
+    
+    
+    $("#previous_to_survey").click(function(){
+        $("#site_info").css("display", "none");
+        $("#survey_info").css("display", "block");
+    });
+    
+    
+    $("#previous_to_sites").click(function(){
+        $("#summary").css("display", "none");
+        $("#site_info").css("display", "block");
     });
     
 });
