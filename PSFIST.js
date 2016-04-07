@@ -110,9 +110,11 @@ $(document).ready(function(){
     //CREATE INPUT FIELDS FOR BIRDS FOUND
     function speciesInput(siteNumber, x){
         
-        
-        birdContainer = $("<div/>", {
-                        id: 'birdcontainer'+siteNumber+''+x+''
+        birdContainer = $("<fieldset/>", {
+                        id: 'birdcontainer'+siteNumber+''+x+'',
+                        html: $("<legend/>", {
+                            text: "Bird "+x+""  
+                            })
                         });
         
 
@@ -323,14 +325,15 @@ $(document).ready(function(){
     //THE MAIN FUNCTION
     $(document).on("change", "#route", function(){
         
-        var routeName = $(this).find('option:selected').text();
-        
         $("#sites").empty();
+        
+        routeName = $(this).find('option:selected').text();
+        $("#sites").prepend("<div id='route_display_name'>"+routeName+"</div>");
         
         siteCount = $(this.options[this.selectedIndex]).attr('data-sites');
         
         for(i = 1; i <= siteCount; i++){
-            $("#sites").append("<div class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><select class='number_select' id='site"+i+"_number_found' name='site["+i+"]'>"+birdCounter+"</select></div>");
+            $("#sites").append("<fieldset class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><legend data-site_number='"+i+"'>Site "+i+" - Number of birds found: <select class='number_select' id='site"+i+"_number_found' name='site["+i+"]'>"+birdCounter+"</select></legend></fieldset>");
             $("#site"+i+"").append(noneInput(i));
         };
         
@@ -366,7 +369,8 @@ $(document).ready(function(){
                         
                         newInput = speciesInput(siteNumber, x);
                         
-                        $(this).parent().append(newInput);
+                        //$(this).parent().append(newInput);
+                        $("#site"+siteNumber+"").append(newInput);
                         this['inputArray' + siteNumber].push(newInput);   
                     };
                     
@@ -385,7 +389,8 @@ $(document).ready(function(){
                 };
                 
                 this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
-                $(this).parent().append(this['inputArray' + siteNumber]);
+                //$(this).parent().append(this['inputArray' + siteNumber]);
+                $("#site"+siteNumber+"").append(this['inputArray' + siteNumber]);
             };
         });
         
@@ -532,6 +537,7 @@ $(document).ready(function(){
         
         //$('html, body').animate({ scrollTop: 0 }, 'fast');
         
+        /*
         //VALIDATION
         name = $("#name").val()
         date = $("#date").val();
@@ -576,11 +582,11 @@ $(document).ready(function(){
             if (route == null){
                 alert("Please select a route");
             }
-        }
-        else{
+        }*/
+        //else{
             $("#survey_info").css("display", "none");
             $("#site_info").css("display", "block");
-        };
+        //};
 
     });
     
