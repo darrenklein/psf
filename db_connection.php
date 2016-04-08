@@ -50,35 +50,30 @@ else{
             }
             else{
                 $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
+                $target_file = str_replace(" ", "", $target_file);
                 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
                 $uploadOk = 1;
                 
                 if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff") {
-                    echo "Sorry, only JPG, JPEG, PNG, GIF, TIF, & TIFF files are allowed. Please return to the form and try again.";
+                    echo "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.";
                     $uploadOk = 0;
                 };
                 
                 if($uploadOk == 0){
-                    $conn->close();
-                    echo "Sorry, there was a problem.";
+                    echo "Please return to the form and try again.";
+                    die();
                 }
                 else{
+                    if (file_exists($target_file)) {
+                        $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
+                        $target_file = str_replace(" ", "", $target_file);
+                    };
+                    
                     if(move_uploaded_file($_FILES['siteimage'.$siteNumber.'']['tmp_name'], $target_file)){
                         $image_url = $target_file;
                     };
                 };
             };
-
-            /*if(isset($siteImage)){
-                $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
-
-                if(move_uploaded_file($siteImage, $target_file)){
-                    $image_url = $target_file;
-                }
-                else{
-                    $image_url = "NULL";
-                };
-            }*/
 
             $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, sex, age, action, notes, image_url)
             VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
@@ -102,10 +97,29 @@ else{
 
                 if($image_array[$siteNumber][$key]){
                     $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
-
-                    if(move_uploaded_file($_FILES['image'.$siteNumber.'']['tmp_name'][$key], $target_file)){
-                        $image_url = $conn->real_escape_string($target_file);
+                    $target_file = str_replace(" ", "", $target_file);
+                    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                    $uploadOk = 1;
+                    
+                    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff") {
+                        echo "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed. Please return to the form and try again.";
+                        $uploadOk = 0;
+                    };
+                
+                    if($uploadOk == 0){
+                        echo "Please return to the form and try again.";
+                        die();
                     }
+                    else{
+                        if (file_exists($target_file)){
+                            $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
+                            $target_file = str_replace(" ", "", $target_file);
+                        };
+                        
+                        if(move_uploaded_file($_FILES['image'.$siteNumber.'']['tmp_name'][$key], $target_file)){
+                            $image_url = $conn->real_escape_string($target_file);
+                        };
+                    };
                 }
                 else{
                     $image_url = "NULL";
@@ -120,10 +134,14 @@ else{
 
 
 
-    if ($conn->multi_query($sql) === TRUE) {
+    if($conn->multi_query($sql) === TRUE) {
         $conn->close();
         header("Location:confirmation.html");
-    };
+    }
+    else{
+        echo "There seems to have been an error - please contact the Project Safe Flight administrator."; 
+        die();
+    }
     
 };
 
