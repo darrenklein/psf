@@ -39,13 +39,37 @@ else{
 
         if(isset($_POST['nonenotes'.$siteNumber.''])){
             $noneNotes = $conn->real_escape_string($_POST['nonenotes'.$siteNumber.'']);
-            $siteImage = $conn->real_escape_string($_FILES['siteimage'.$siteNumber.'']['tmp_name']);
+            $siteImage = $conn->real_escape_string($_FILES['siteimage'.$siteNumber.'']['name']);
 
-            if($noneNotes == ''){
+            if(empty($noneNotes)){
                 $noneNotes = "NULL";
             }
+            
+            if(empty($siteImage)){
+                $image_url = "NULL";   
+            }
+            else{
+                $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
+                $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                $uploadOk = 1;
+                
+                if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff") {
+                    echo "Sorry, only JPG, JPEG, PNG, GIF, TIF, & TIFF files are allowed. Please return to the form and try again.";
+                    $uploadOk = 0;
+                };
+                
+                if($uploadOk == 0){
+                    $conn->close();
+                    echo "Sorry, there was a problem.";
+                }
+                else{
+                    if(move_uploaded_file($_FILES['siteimage'.$siteNumber.'']['tmp_name'], $target_file)){
+                        $image_url = $target_file;
+                    };
+                };
+            };
 
-            if(isset($siteImage)){
+            /*if(isset($siteImage)){
                 $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
 
                 if(move_uploaded_file($siteImage, $target_file)){
@@ -54,7 +78,7 @@ else{
                 else{
                     $image_url = "NULL";
                 };
-            }
+            }*/
 
             $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, sex, age, action, notes, image_url)
             VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
@@ -66,7 +90,7 @@ else{
             $age_array[$siteNumber] = $_POST['age'.$siteNumber.''];
             $action_array[$siteNumber] = $_POST['action'.$siteNumber.''];
             $notes_array[$siteNumber] = $_POST['notes'.$siteNumber.''];
-            $image_array[$siteNumber] = $_FILES['image'.$siteNumber.'']['tmp_name'];
+            $image_array[$siteNumber] = $_FILES['image'.$siteNumber.'']['name'];
 
             foreach($species_array[$siteNumber] as $key => $species){
 
@@ -79,7 +103,7 @@ else{
                 if($image_array[$siteNumber][$key]){
                     $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
 
-                    if(move_uploaded_file($image_array[$siteNumber][$key], $target_file)){
+                    if(move_uploaded_file($_FILES['image'.$siteNumber.'']['tmp_name'][$key], $target_file)){
                         $image_url = $conn->real_escape_string($target_file);
                     }
                 }
