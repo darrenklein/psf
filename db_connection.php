@@ -20,7 +20,7 @@ else{
     $sql = '';
 
     //SURVEY INFO
-    $name = $city = $conn->real_escape_string($_POST['name']);
+    $name = $conn->real_escape_string($_POST['name']);
     $date = $conn->real_escape_string($_POST['date']);
     $hour = $conn->real_escape_string($_POST['hour']);
     $minute = $conn->real_escape_string($_POST['minute']);
