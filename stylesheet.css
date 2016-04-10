@@ -84,6 +84,7 @@ button, input[type="submit"]{
     position: absolute;
     color: #FFFFFF;
     font-size: 23px;
+    letter-spacing: 1px;
     padding: 4px 15px 4px 15px;
     border: 0px;
     border-radius: 4px;
