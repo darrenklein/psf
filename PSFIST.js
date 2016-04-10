@@ -105,7 +105,6 @@ $(document).ready(function(){
                                     click: function(){
                                         file = $('#siteimage'+siteNumber+'')[0];
                                         totalFileSize -= file.files[0].size;
-                                        alert(totalFileSize);
                                         
                                         fileInput = $('#siteimage'+siteNumber+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -305,7 +304,6 @@ $(document).ready(function(){
                                 change: function(){
                                     //TICKS UP THE TOTAL FILE SIZE VAR, FOR FORM VALIDATION
                                     totalFileSize += this.files[0].size;
-                                    alert(totalFileSize);
                                     }
                                 }
                             });
@@ -324,7 +322,6 @@ $(document).ready(function(){
                                     click: function(){        
                                         file = $('#image'+siteNumber+''+x+'')[0];
                                         totalFileSize -= file.files[0].size;
-                                        alert(totalFileSize);
                                 
                                         fileInput = $('#image'+siteNumber+''+x+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -453,6 +450,13 @@ $(document).ready(function(){
                     proceed = false;
                 };   
             });
+            
+            if(totalFileSize > 48000000){
+                megaBytes = Math.floor(totalFileSize/1000000);
+                
+                alert("Total size of attached images is too large - 48Mb max. Your current attachments total "+megaBytes+"Mb.");
+                proceed = false;
+            }
             
             
             if (proceed){
