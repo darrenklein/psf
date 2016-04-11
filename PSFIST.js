@@ -99,7 +99,6 @@ $(document).ready(function(){
                                                 $(this).attr('data-initiated', 'yes');
                                                 $(this).attr('data-file_name', this.files[0].name);
                                                 
-                                                //TICKS UP THE TOTAL FILE SIZE VAR, FOR FORM VALIDATION
                                                 tmpFileSize = this.files[0].size;
                                                 totalFileSize += tmpFileSize;
                                                 console.log(totalFileSize);   
@@ -125,7 +124,7 @@ $(document).ready(function(){
                                         totalFileSize -= file.files[0].size;
                                         $(file).attr('data-initiated', 'no');
                                         console.log(totalFileSize); 
-                                        
+
                                         fileInput = $('#siteimage'+siteNumber+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
                                     }  
@@ -322,11 +321,26 @@ $(document).ready(function(){
                             name: 'image'+siteNumber+'['+x+']',
                             on: {
                                 change: function(){
-                                    //TICKS UP THE TOTAL FILE SIZE VAR, FOR FORM VALIDATION
-                                    totalFileSize += this.files[0].size;
+
+                                    if($(this).attr('data-initiated') == 'yes'){
+                                        $(this).attr('data-file_name', this.files[0].name);
+
+                                        totalFileSize -= tmpFileSize;
+                                        tmpFileSize = this.files[0].size;
+                                        totalFileSize += tmpFileSize;
+                                        console.log(totalFileSize);
+                                    }
+                                    else{
+                                        $(this).attr('data-initiated', 'yes');
+                                        $(this).attr('data-file_name', this.files[0].name);
+
+                                        tmpFileSize = this.files[0].size;
+                                        totalFileSize += tmpFileSize;
+                                        console.log(totalFileSize);   
                                     }
                                 }
-                            });
+                            }
+                        });
         
                     imageLabel = $("<label/>", {
                                 text: 'Attach an image',
@@ -339,15 +353,19 @@ $(document).ready(function(){
                             class: 'clear',
                             id: 'clear'+siteNumber+''+x+'',
                             on: {
-                                    click: function(){        
-                                        file = $('#image'+siteNumber+''+x+'')[0];
-                                        totalFileSize -= file.files[0].size;
-                                
-                                        fileInput = $('#image'+siteNumber+''+x+'');
-                                        fileInput.replaceWith(fileInput = fileInput.clone(true));
-                                    }  
-                                }
-                            });
+                                click: function(){
+                                    $('#image'+siteNumber+''+x+'').attr('data-file_name', '');
+
+                                    file = $('#image'+siteNumber+''+x+'')[0];
+                                    totalFileSize -= file.files[0].size;
+                                    $(file).attr('data-initiated', 'no');
+                                    console.log(totalFileSize); 
+
+                                    fileInput = $('#image'+siteNumber+''+x+'');
+                                    fileInput.replaceWith(fileInput = fileInput.clone(true));
+                                } 
+                            }
+                        });
         
                     speciesContainer.append(speciesLabel);
                     deadInjuredContainer.append(deadLabel);
@@ -569,13 +587,14 @@ $(document).ready(function(){
                             summaryAction = $("#action"+i+""+z+"").find('option:selected').text();
                             summaryNotes = $("#notes"+i+""+z+"").val();
 
-                            summaryImage = $("#image"+i+""+z+"").val();
+                            //summaryImage = $("#image"+i+""+z+"").val();
+                            summaryImage = $("#image"+i+""+z+"").attr("data-file_name");
 
-                            if (summaryImage == ""){
+                            if (summaryImage == undefined || summaryImage == ""){
                                 summaryImage = "No image attached for this bird";
                             }
                             else{
-                                summaryImage = "Image attached!";  
+                                summaryImage = ""+summaryImage+"";  
                             };
 
                             $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
