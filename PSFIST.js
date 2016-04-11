@@ -83,11 +83,27 @@ $(document).ready(function(){
                                     type: 'file',
                                     id: 'siteimage'+siteNumber+'',
                                     name: 'siteimage'+siteNumber+'',
+                                    attr: ('data-file_name', ''),
                                     on: {
                                         change: function(){
-                                            //TICKS UP THE TOTAL FILE SIZE VAR, FOR FORM VALIDATION
-                                            totalFileSize += this.files[0].size;
-                                            alert(totalFileSize);
+                                            
+                                            if($(this).attr('data-initiated') == 'yes'){
+                                                $(this).attr('data-file_name', this.files[0].name);
+                                                
+                                                totalFileSize -= tmpFileSize;
+                                                tmpFileSize = this.files[0].size;
+                                                totalFileSize += tmpFileSize;
+                                                console.log(totalFileSize);
+                                            }
+                                            else{
+                                                $(this).attr('data-initiated', 'yes');
+                                                $(this).attr('data-file_name', this.files[0].name);
+                                                
+                                                //TICKS UP THE TOTAL FILE SIZE VAR, FOR FORM VALIDATION
+                                                tmpFileSize = this.files[0].size;
+                                                totalFileSize += tmpFileSize;
+                                                console.log(totalFileSize);   
+                                            }
                                         }
                                     }
                                 });
@@ -103,8 +119,12 @@ $(document).ready(function(){
                                 id: 'clear'+siteNumber+'',
                                 on: {
                                     click: function(){
+                                        $('#siteimage'+siteNumber+'').attr('data-file_name', '');
+                                        
                                         file = $('#siteimage'+siteNumber+'')[0];
                                         totalFileSize -= file.files[0].size;
+                                        $(file).attr('data-initiated', 'no');
+                                        console.log(totalFileSize); 
                                         
                                         fileInput = $('#siteimage'+siteNumber+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -380,7 +400,7 @@ $(document).ready(function(){
                 $("#site"+siteNumber+"").append(noneInput(siteNumber));
             };
             
-            if(this['initiated' + siteNumber]){                
+            if(this['initiated' + siteNumber]){
                 if(this['arrayLength' + siteNumber] > numberFound){
                     for(z = this['arrayLength' + siteNumber]; z > numberFound; z--){
                         $("#birdcontainer"+siteNumber+""+z+"").remove();
@@ -430,6 +450,8 @@ $(document).ready(function(){
             
             //VALIDATION
             var proceed = true;
+            var actions = true;
+            var images = true;
                 
             $(".species_select").each(function() {
                         
@@ -441,8 +463,9 @@ $(document).ready(function(){
                 };
             });
                 
+
             $(".action_select").each(function(){
-                        
+
                 if ($(this).val() == null){
                     site = $(this).attr("site");
                     bird = $(this).attr("bird");  
@@ -451,15 +474,16 @@ $(document).ready(function(){
                 };   
             });
             
+            
             if(totalFileSize > 48000000){
-                megaBytes = Math.floor(totalFileSize/1000000);
-                
+                megaBytes = Math.ceil(totalFileSize/1000000);
+
                 alert("Total size of attached images is too large - 48Mb max. Your current attachments total "+megaBytes+"Mb.");
                 proceed = false;
-            }
+            }; 
+
             
-            
-            if (proceed){
+            if(proceed){
                 
                 //CLEAR THEM OUT TO BE FILLED/REFILLED
                 $(".summary_field").empty();
@@ -492,17 +516,18 @@ $(document).ready(function(){
 
                     if (summaryNumberFound === "0"){
                         summaryNoneNotes = $("#nonenotes"+i+"").val();
-                        summarySiteImage = $("#siteimage"+i+"").val();
+                        //summarySiteImage = $("#siteimage"+i+"").val().slice(12);//SLICE TRIMS THE TEMPORARY NAME PREFIX
+                        summarySiteImage = $("#siteimage"+i+"").attr("data-file_name");
 
                         if(summaryNoneNotes == ""){
                             summaryNoneNotes = "No birds found at this site";
                         };
 
-                        if(summarySiteImage == ""){
+                        if(summarySiteImage == undefined || summarySiteImage == ""){
                             summarySiteImage = "No image attached for this site";  
                         }
                         else{
-                            summarySiteImage = "Image attached!";
+                            summarySiteImage = ""+summarySiteImage+"";
                         };
 
                         $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
