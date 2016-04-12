@@ -1178,14 +1178,14 @@ $(document).ready(function(){
                     totalFileSize += fileSize;
                 });
 
-
+                /*
                 if(totalFileSize > 48000000){
                     megaBytes = Math.ceil(totalFileSize/1000000);
 
                     alert("Total size of attached images is too large - 48Mb max. Your current attachment total is "+megaBytes+"Mb.");
                     proceed = false;
                 };
-
+                */
 
                 if(proceed){
 

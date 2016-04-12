@@ -15,8 +15,9 @@ else{
     $dbname = "Project_Safe_Flight";
     $target_dir = "uploads/";
     
-    $fileTypeErrorMessage = "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.";
-    $returnErrorMessage = "Please return to the form and try again.";
+    $fileTypeErrorMessage = "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed. ";
+    $fileSizeErrorMessage = "Total attachments cannot exceed 48Mb. ";
+    $returnErrorMessage = "Please return to the form and try again. ";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -35,6 +36,8 @@ else{
 
     //SITE INFO
     $site_array = $_POST['site'];
+    
+    $totalFileSize = 0;
 
     foreach($site_array as $siteNumber => $value){
         
@@ -55,10 +58,16 @@ else{
                 $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
                 $target_file = str_replace(" ", "", $target_file);
                 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                $totalFileSize += filesize($_FILES['siteimage'.$siteNumber.'']['tmp_name']);
                 $uploadOk = 1;
                 
                 if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff") {
                     echo $fileTypeErrorMessage;
+                    $uploadOk = 0;
+                };
+                
+                if($totalFileSize > 48000000){
+                    echo $fileSizeErrorMessage;
                     $uploadOk = 0;
                 };
                 
@@ -102,10 +111,16 @@ else{
                     $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
                     $target_file = str_replace(" ", "", $target_file);
                     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                    $totalFileSize += filesize($_FILES['image'.$siteNumber.'']['tmp_name'][$key]);
                     $uploadOk = 1;
                     
                     if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff"){
                         echo $fileTypeErrorMessage;
+                        $uploadOk = 0;
+                    };
+                    
+                    if($totalFileSize > 48000000){
+                        echo $fileSizeErrorMessage;
                         $uploadOk = 0;
                     };
                 
