@@ -14,6 +14,9 @@ else{
     $servername = "localhost";
     $dbname = "Project_Safe_Flight";
     $target_dir = "uploads/";
+    
+    $fileTypeErrorMessage = "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.";
+    $returnErrorMessage = "Please return to the form and try again.";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -55,16 +58,16 @@ else{
                 $uploadOk = 1;
                 
                 if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff") {
-                    echo "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.";
+                    echo $fileTypeErrorMessage;
                     $uploadOk = 0;
                 };
                 
                 if($uploadOk == 0){
-                    echo "Please return to the form and try again.";
+                    echo $returnErrorMessage;
                     die();
                 }
                 else{
-                    if (file_exists($target_file)) {
+                    if(file_exists($target_file)){
                         $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
                         $target_file = str_replace(" ", "", $target_file);
                     };
@@ -101,13 +104,13 @@ else{
                     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
                     $uploadOk = 1;
                     
-                    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff") {
-                        echo "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed. Please return to the form and try again.";
+                    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != "tif" && $imageFileType != "tiff"){
+                        echo $fileTypeErrorMessage;
                         $uploadOk = 0;
                     };
                 
                     if($uploadOk == 0){
-                        echo "Please return to the form and try again.";
+                        echo $returnErrorMessage;
                         die();
                     }
                     else{
