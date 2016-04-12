@@ -81,28 +81,14 @@ $(document).ready(function(){
 
                         siteImage = $("<input/>", {
                                     type: 'file',
+                                    class: 'image_attachment',
                                     id: 'siteimage'+siteNumber+'',
                                     name: 'siteimage'+siteNumber+'',
                                     attr: ('data-file_name', ''),
                                     on: {
                                         change: function(){
-                                            
-                                            if($(this).attr('data-initiated') == 'yes'){
-                                                $(this).attr('data-file_name', this.files[0].name);
-                                                
-                                                totalFileSize -= tmpFileSize;
-                                                tmpFileSize = this.files[0].size;
-                                                totalFileSize += tmpFileSize;
-                                                console.log(totalFileSize);
-                                            }
-                                            else{
-                                                $(this).attr('data-initiated', 'yes');
-                                                $(this).attr('data-file_name', this.files[0].name);
-                                                
-                                                tmpFileSize = this.files[0].size;
-                                                totalFileSize += tmpFileSize;
-                                                console.log(totalFileSize);   
-                                            }
+                                            $(this).data('file_name', this.files[0].name);
+                                            $(this).data('file_size', this.files[0].size);
                                         }
                                     }
                                 });
@@ -118,12 +104,8 @@ $(document).ready(function(){
                                 id: 'clear'+siteNumber+'',
                                 on: {
                                     click: function(){
-                                        $('#siteimage'+siteNumber+'').attr('data-file_name', '');
-                                        
-                                        file = $('#siteimage'+siteNumber+'')[0];
-                                        totalFileSize -= file.files[0].size;
-                                        $(file).attr('data-initiated', 'no');
-                                        console.log(totalFileSize); 
+                                        $('#siteimage'+siteNumber+'').data('file_name', '');
+                                        $('#siteimage'+siteNumber+'').data('file_size', 0);
 
                                         fileInput = $('#siteimage'+siteNumber+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -317,27 +299,13 @@ $(document).ready(function(){
 
                     image = $("<input/>", {
                             type: 'file',
+                            class: 'image_attachment',
                             id: 'image'+siteNumber+''+x+'',
                             name: 'image'+siteNumber+'['+x+']',
                             on: {
                                 change: function(){
-
-                                    if($(this).attr('data-initiated') == 'yes'){
-                                        $(this).attr('data-file_name', this.files[0].name);
-
-                                        totalFileSize -= tmpFileSize;
-                                        tmpFileSize = this.files[0].size;
-                                        totalFileSize += tmpFileSize;
-                                        console.log(totalFileSize);
-                                    }
-                                    else{
-                                        $(this).attr('data-initiated', 'yes');
-                                        $(this).attr('data-file_name', this.files[0].name);
-
-                                        tmpFileSize = this.files[0].size;
-                                        totalFileSize += tmpFileSize;
-                                        console.log(totalFileSize);   
-                                    }
+                                    $(this).data('file_name', this.files[0].name);
+                                    $(this).data('file_size', this.files[0].size);
                                 }
                             }
                         });
@@ -354,12 +322,8 @@ $(document).ready(function(){
                             id: 'clear'+siteNumber+''+x+'',
                             on: {
                                 click: function(){
-                                    $('#image'+siteNumber+''+x+'').attr('data-file_name', '');
-
-                                    file = $('#image'+siteNumber+''+x+'')[0];
-                                    totalFileSize -= file.files[0].size;
-                                    $(file).attr('data-initiated', 'no');
-                                    console.log(totalFileSize); 
+                                    $('#image'+siteNumber+''+x+'').data('file_name', '');
+                                    $('#image'+siteNumber+''+x+'').data('file_size', 0);
 
                                     fileInput = $('#image'+siteNumber+''+x+'');
                                     fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -468,9 +432,8 @@ $(document).ready(function(){
             
             //VALIDATION
             var proceed = true;
-            var actions = true;
-            var images = true;
-                
+            var totalFileSize = 0;
+            
             $(".species_select").each(function() {
                         
                 if ($(this).val() == null){
@@ -493,12 +456,25 @@ $(document).ready(function(){
             });
             
             
+            
+            $(".image_attachment").each(function(){
+                if($(this).data('file_size') == undefined){
+                    fileSize = 0;
+                }
+                else{
+                    fileSize = $(this).data('file_size');
+                };
+                
+                totalFileSize += fileSize;
+            });
+            
+            
             if(totalFileSize > 48000000){
                 megaBytes = Math.ceil(totalFileSize/1000000);
 
-                alert("Total size of attached images is too large - 48Mb max. Your current attachments total "+megaBytes+"Mb.");
+                alert("Total size of attached images is too large - 48Mb max. Your current attachment total is "+megaBytes+"Mb.");
                 proceed = false;
-            }; 
+            };
 
             
             if(proceed){
@@ -534,8 +510,7 @@ $(document).ready(function(){
 
                     if (summaryNumberFound === "0"){
                         summaryNoneNotes = $("#nonenotes"+i+"").val();
-                        //summarySiteImage = $("#siteimage"+i+"").val().slice(12);//SLICE TRIMS THE TEMPORARY NAME PREFIX
-                        summarySiteImage = $("#siteimage"+i+"").attr("data-file_name");
+                        summarySiteImage = $("#siteimage"+i+"").data("file_name");
 
                         if(summaryNoneNotes == ""){
                             summaryNoneNotes = "No birds found at this site";
@@ -588,7 +563,7 @@ $(document).ready(function(){
                             summaryNotes = $("#notes"+i+""+z+"").val();
 
                             //summaryImage = $("#image"+i+""+z+"").val();
-                            summaryImage = $("#image"+i+""+z+"").attr("data-file_name");
+                            summaryImage = $("#image"+i+""+z+"").data("file_name");
 
                             if (summaryImage == undefined || summaryImage == ""){
                                 summaryImage = "No image attached for this bird";
