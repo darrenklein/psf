@@ -85,6 +85,7 @@ $(document).ready(function(){
                                         change: function(){
                                             $(this).data('file_name', this.files[0].name);
                                             $(this).data('file_size', this.files[0].size);
+                                            $(this).data('file_type', this.files[0].name.split(".")[1].toLowerCase());
                                         }
                                     }
                                 });
@@ -102,6 +103,7 @@ $(document).ready(function(){
                                     click: function(){
                                         $('#siteimage'+siteNumber+'').data('file_name', '');
                                         $('#siteimage'+siteNumber+'').data('file_size', 0);
+                                        $('#siteimage'+siteNumber+'').data('file_type', '');
 
                                         fileInput = $('#siteimage'+siteNumber+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -302,6 +304,7 @@ $(document).ready(function(){
                                 change: function(){
                                     $(this).data('file_name', this.files[0].name);
                                     $(this).data('file_size', this.files[0].size);
+                                    $(this).data('file_type', this.files[0].name.split(".")[1].toLowerCase());
                                 }
                             }
                         });
@@ -320,6 +323,7 @@ $(document).ready(function(){
                                 click: function(){
                                     $('#image'+siteNumber+''+x+'').data('file_name', '');
                                     $('#image'+siteNumber+''+x+'').data('file_size', 0);
+                                    $('#image'+siteNumber+''+x+'').data('file_type', '');
 
                                     fileInput = $('#image'+siteNumber+''+x+'');
                                     fileInput.replaceWith(fileInput = fileInput.clone(true));
@@ -498,6 +502,12 @@ $(document).ready(function(){
 
 
                 $(".image_attachment").each(function(){
+                    
+                    if($(this).data('file_type') != 'jpg' && $(this).data('file_type') != 'jpeg' && $(this).data('file_type') != 'png' && $(this).data('file_type') != 'gif' && $(this).data('file_type') != 'tif' && $(this).data('file_type') != 'tiff' && $(this).data('file_type') != '' && $(this).data('file_type') != undefined){
+                        alert("One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.");
+                        proceed = false;
+                    };
+                    
                     if($(this).data('file_size') == undefined){
                         fileSize = 0;
                     }
@@ -508,14 +518,14 @@ $(document).ready(function(){
                     totalFileSize += fileSize;
                 });
 
-                /*
+                
                 if(totalFileSize > 48000000){
                     megaBytes = Math.ceil(totalFileSize/1000000);
 
                     alert("Total size of attached images is too large - 48Mb max. Your current attachment total is "+megaBytes+"Mb.");
                     proceed = false;
                 };
-                */
+                
 
                 if(proceed){
 
