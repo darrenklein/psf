@@ -106,6 +106,10 @@ else{
                 $age = $conn->real_escape_string($age_array[$siteNumber][$key]);
                 $action = $conn->real_escape_string($action_array[$siteNumber][$key]);
                 $notes = $conn->real_escape_string($notes_array[$siteNumber][$key]);
+                
+                if(empty($notes)){
+                    $notes = "NULL";
+                }
 
                 if($image_array[$siteNumber][$key]){
                     $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($image_array[$siteNumber][$key])));
