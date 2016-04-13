@@ -33,7 +33,7 @@ a:hover, a:focus{
 #contents{
     display: block;
     background-color: #FCFCFC;
-    width: 50%;
+    width: 700px;
     margin: 0 auto;
     margin-bottom: 50px;
     padding-top: 20px;
@@ -78,6 +78,14 @@ a:hover, a:focus{
 
 #summary{
     display: none;
+}
+
+.form_field{
+    margin: 3px 0px 0px 8px;
+}
+
+.entry_field{
+    margin: 0px 0px 20px 0px;
 }
 
 button, input[type="submit"]{

@@ -52,28 +52,30 @@
                 </div>
 
                 <div class="entry_field">
-                    <label for="name">Volunteer Name</label>
+                    <label for="name">Volunteer Name</label></br>
                     <input type="text" id="name" name="name" class="form_field" autofocus />
                 </div>
 
                 <div class="entry_field">
-                    <label for='date'>Survey Date</label>
-                    <input type="text" id="date" name="date" placeholder="Please select from the calendar" readonly="true">
+                    <label for='date'>Survey Date</label></br>
+                    <input type="text" id="date" name="date" class="form_field" placeholder="Please select from the calendar" readonly="true">
                 </div>
 
                 <div class="entry_field">
-                    <label for='hour'>Survey Time</label>
-                    <select id="hour" name="hour"></select> : <select id="minute" name="minute"></select> <select id="ampm" name="ampm"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
+                    <label for='hour'>Survey Time</label></br>
+                    <div class="form_field">
+                        <select id="hour" name="hour"></select> : <select id="minute" name="minute"></select> <select id="ampm" name="ampm"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
+                    </div>
                 </div>
 
                 <div class="entry_field">
-                    <label for='duration'>Survey Duration (minutes)</label>
-                    <select id="duration" name="duration"></select>
+                    <label for='duration'>Survey Duration (minutes)</label></br>
+                    <select id="duration" name="duration" class="form_field"></select>
                 </div>
 
                 <div class="entry_field">
-                    <label for='weather'>Weather</label>
-                    <select id="weather" name="weather">
+                    <label for='weather'>Weather</label></br>
+                    <select id="weather" name="weather" class="form_field">
                         <option disabled selected>Select weather</option>
                         <option value="sunny">Sunny</option>
                         <option value="partly_cloudy">Partly cloudy</option>
@@ -86,7 +88,7 @@
                 </div>
 
                 <div class="entry_field">
-                    <label for="route">Route</label>
+                    <label for="route">Route</label></br>
                     <select id="route" name="route" class="form_field">
                         <option class="route" disabled selected>Select route</option>
                         <option class="route" value="brooklyn_public_library_and_richard_meier_building" data-sites="2">Brooklyn Public Library &amp; Richard Meier Building</option>
