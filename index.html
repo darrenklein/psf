@@ -51,58 +51,62 @@
                     <div class="page_instructions">- All fields required</div>
                 </div>
 
-                <div class="entry_field">
-                    <label for="name">Volunteer Name</label></br>
-                    <input type="text" id="name" name="name" class="form_field" autofocus />
-                </div>
-
-                <div class="entry_field">
-                    <label for='date'>Survey Date</label></br>
-                    <input type="text" id="date" name="date" class="form_field" placeholder="Please select from the calendar" readonly="true">
-                </div>
-
-                <div class="entry_field">
-                    <label for='hour'>Survey Time</label></br>
-                    <div class="form_field">
-                        <select id="hour" name="hour"></select> : <select id="minute" name="minute"></select> <select id="ampm" name="ampm"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
+                <div class="fields survey_fields">
+                
+                    <div class="survey_entry_field">
+                        <label for="name">Volunteer Name</label></br>
+                        <input type="text" id="name" name="name" class="form_field" autofocus />
                     </div>
-                </div>
 
-                <div class="entry_field">
-                    <label for='duration'>Survey Duration (minutes)</label></br>
-                    <select id="duration" name="duration" class="form_field"></select>
-                </div>
+                    <div class="survey_entry_field">
+                        <label for='date'>Survey Date</label></br>
+                        <input type="text" id="date" name="date" class="form_field" placeholder="Click to select from the calendar" readonly="true">
+                    </div>
 
-                <div class="entry_field">
-                    <label for='weather'>Weather</label></br>
-                    <select id="weather" name="weather" class="form_field">
-                        <option disabled selected>Select weather</option>
-                        <option value="sunny">Sunny</option>
-                        <option value="partly_cloudy">Partly cloudy</option>
-                        <option value="cloudy">Cloudy</option>
-                        <option value="light rain">Light rain</option>
-                        <option value="rain">Rain</option>
-                        <option value="fog">Fog</option>
-                        <option value="not_collected">Not collected</option>
-                    </select>
-                </div>
+                    <div class="survey_entry_field">
+                        <label for='hour'>Survey Time</label></br>
+                        <div class="form_field">
+                            <select id="hour" name="hour" class="time"></select> : <select id="minute" name="minute" class="time"></select> <select id="ampm" name="ampm" class="time"><option disabled selected>AM/PM</option><option value="am">AM</option><option value="pm">PM</option></select>
+                        </div>
+                    </div>
 
-                <div class="entry_field">
-                    <label for="route">Route</label></br>
-                    <select id="route" name="route" class="form_field">
-                        <option class="route" disabled selected>Select route</option>
-                        <option class="route" value="brooklyn_public_library_and_richard_meier_building" data-sites="2">Brooklyn Public Library &amp; Richard Meier Building</option>
-                        <option class="route" value="bryant_park" data-sites="4">Bryant Park</option>
-                        <option class="route" value="columbia_university" data-sites="2">Columbia University</option>
-                        <option class="route" value="exxon" data-sites="4">Exxon - 1251 6th Avenue</option>
-                        <option class="route" value="ford_foundation_building" data-sites="3">Ford Foundation Building</option>
-                        <option class="route" value="javits" data-sites="8">Javits</option>
-                        <option class="route" value="lic_court_square" data-sites="7">LIC - Court Square</option>
-                        <option class="route" value="metropolitan_museum_of_art" data-sites="7">Metropolitan Museum of Art</option>
-                        <option class="route" value="freedom_tower" data-sites="4">Freedom Tower</option>
-                        <option class="route" value="goldman_sachs" data-sites="3">Goldman Sachs - 200 West Street</option>
-                        <option class="route" value="wfc_brookfield_place" data-sites="18">WFC - Brookfield Place</option>
-                    </select>
+                    <div class="survey_entry_field">
+                        <label for='duration'>Survey Duration (minutes)</label></br>
+                        <select id="duration" name="duration" class="form_field"></select>
+                    </div>
+
+                    <div class="survey_entry_field">
+                        <label for='weather'>Weather</label></br>
+                        <select id="weather" name="weather" class="form_field">
+                            <option disabled selected>Select weather</option>
+                            <option value="sunny">Sunny</option>
+                            <option value="partly_cloudy">Partly cloudy</option>
+                            <option value="cloudy">Cloudy</option>
+                            <option value="light rain">Light rain</option>
+                            <option value="rain">Rain</option>
+                            <option value="fog">Fog</option>
+                            <option value="not_collected">Not collected</option>
+                        </select>
+                    </div>
+
+                    <div class="survey_entry_field">
+                        <label for="route">Route</label></br>
+                        <select id="route" name="route" class="form_field">
+                            <option class="route" disabled selected>Select route</option>
+                            <option class="route" value="brooklyn_public_library_and_richard_meier_building" data-sites="2">Brooklyn Public Library &amp; Richard Meier Building</option>
+                            <option class="route" value="bryant_park" data-sites="4">Bryant Park</option>
+                            <option class="route" value="columbia_university" data-sites="2">Columbia University</option>
+                            <option class="route" value="exxon" data-sites="4">Exxon - 1251 6th Avenue</option>
+                            <option class="route" value="ford_foundation_building" data-sites="3">Ford Foundation Building</option>
+                            <option class="route" value="javits" data-sites="8">Javits</option>
+                            <option class="route" value="lic_court_square" data-sites="7">LIC - Court Square</option>
+                            <option class="route" value="metropolitan_museum_of_art" data-sites="7">Metropolitan Museum of Art</option>
+                            <option class="route" value="freedom_tower" data-sites="4">Freedom Tower</option>
+                            <option class="route" value="goldman_sachs" data-sites="3">Goldman Sachs - 200 West Street</option>
+                            <option class="route" value="wfc_brookfield_place" data-sites="18">WFC - Brookfield Place</option>
+                        </select>
+                    </div>
+
                 </div>
 
                 <button type="button" class="next" id="next_to_sites">Next</button>
@@ -116,11 +120,14 @@
                     <div class="page_number">2. Site Info</div>
                     <div class="page_instructions">
                         - All fields required except for 'Notes' and image attachments</br>
-                        - Please provide as much information as possible
+                        - Please provide as much information as possible</br>
+                        - Total size of image attachments may not exceed 48Mb
                     </div>
                 </div>
 
-                <div id="sites"></div>
+                <div class="fields site_fields">
+                    <div id="sites"></div>
+                </div>
 
                 <button type="button" class="previous" id="previous_to_survey">Previous</button>
                 <button type="button" class="next" id="next_to_summary">Next</button>

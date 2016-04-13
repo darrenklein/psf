@@ -13,7 +13,7 @@ $(document).ready(function(){
     $('#hour').append(hourList);
     
     //TIMEPICKER MINUTES
-    var minuteList = '<option disabled selected>Min</option>';
+    var minuteList = '<option disabled selected>Minute</option>';
     for (m = 0; m <= 59; m++){
         if (m < 10){
             m = "0" + m
@@ -56,22 +56,23 @@ $(document).ready(function(){
                         });
         
                     noneNotesContainer = $("<div/>", {
-                                    class: 'entry_field'
+                                    class: 'site_entry_field'
                                     });
                     siteImageContainer = $("<div/>", {
-                                    class: 'entry_field'
+                                    class: 'site_entry_field'
                                     });
         
         
         
                         noneNotes = $("<input/>", {
                                     type: 'text',
+                                    class: 'site_text_input',
                                     id: 'nonenotes'+siteNumber+'',
                                     name: 'nonenotes'+siteNumber+''
                                     });
         
                         noneNotesLabel = $("<label/>", {
-                                        text: 'Notes',
+                                        text: 'Notes: ',
                                         for: 'nonenotes'+siteNumber+''
                                         }).append(noneNotes);
 
@@ -91,9 +92,9 @@ $(document).ready(function(){
                                 });
         
                         siteImageLabel = $("<label/>", {
-                                    text: 'Attach an image',
-                                    for: 'image'+siteNumber+''
-                                    }).append(siteImage);
+                                    text: 'Attach an image: ',
+                                    for: 'siteimage'+siteNumber+'',
+                                    }).append("<br/>").append(siteImage);
         
                         clear = $("<div/>", {
                                 html: 'Remove image',
@@ -130,6 +131,7 @@ $(document).ready(function(){
         
         birdContainer = $("<fieldset/>", {
                         id: 'birdcontainer'+siteNumber+''+x+'',
+                        class: 'bird_container',
                         html: $("<legend/>", {
                             text: "Bird "+x+""  
                             })
@@ -137,25 +139,25 @@ $(document).ready(function(){
         
 
                 speciesContainer = $("<div/>", {
-                            class: 'entry_field'
+                            class: 'site_entry_field'
                             });
                 deadInjuredContainer = $("<div/>", {
-                            class: 'entry_field'
-                            });
+                            class: 'site_entry_field'
+                            }).prepend('Status: ');
                 sexContainer = $("<div/>", {
-                            class: 'entry_field'
-                            });
+                            class: 'site_entry_field'
+                            }).prepend('Sex: ');
                 ageContainer = $("<div/>", {
-                            class: 'entry_field'
-                            });
+                            class: 'site_entry_field'
+                            }).prepend('Age: ');
                 actionContainer = $("<div/>", {
-                            class: 'entry_field'
+                            class: 'site_entry_field'
                             });
                 notesContainer = $("<div/>", {
-                            class: 'entry_field'
+                            class: 'site_entry_field'
                             });
                 imageContainer = $("<div/>", {
-                            class: 'entry_field'
+                            class: 'site_entry_field'
                             });
         
 
@@ -168,7 +170,7 @@ $(document).ready(function(){
                                     }).append(speciesList);
         
                     speciesLabel = $("<label/>", {
-                                text: 'Species',
+                                text: 'Species: ',
                                 for: 'species'+siteNumber+''+x+''
                                 }).append(species);
 
@@ -280,18 +282,19 @@ $(document).ready(function(){
                                     }).append(actionList);
         
                     actionLabel = $("<label/>", {
-                                text: 'Action',
+                                text: 'Action: ',
                                 for: 'action'+siteNumber+''+x+''
                                 }).append(action);
 
                     notes = $("<input/>", {
                             type: 'text',
+                            class: 'site_text_input',
                             id: 'notes'+siteNumber+''+x+'',
                             name: 'notes'+siteNumber+'['+x+']'
                             });
         
                     notesLabel = $("<label/>", {
-                                text: 'Notes',
+                                text: 'Notes: ',
                                 for: 'notes'+siteNumber+''+x+''
                                 }).append(notes);
 
@@ -310,7 +313,7 @@ $(document).ready(function(){
                         });
         
                     imageLabel = $("<label/>", {
-                                text: 'Attach an image',
+                                text: 'Attach an image: ',
                                 for: 'image'+siteNumber+''+x+''
                                 }).append(image);
         

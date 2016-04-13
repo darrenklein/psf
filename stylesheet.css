@@ -33,7 +33,7 @@ a:hover, a:focus{
 #contents{
     display: block;
     background-color: #FCFCFC;
-    width: 700px;
+    width: 620px;
     margin: 0 auto;
     margin-bottom: 50px;
     padding-top: 20px;
@@ -58,7 +58,7 @@ a:hover, a:focus{
 #psf_form{
     display: table;
     position: relative;
-    width: 80%;
+    width: 68%;
     margin: 0 auto;
     padding: 20px 45px 60px 45px;
     background-color: #F5F2F2;
@@ -84,8 +84,12 @@ a:hover, a:focus{
     margin: 3px 0px 0px 8px;
 }
 
-.entry_field{
+.survey_entry_field{
     margin: 0px 0px 20px 0px;
+}
+
+.site_entry_field{
+    margin: 0px 0px 9px 0px;
 }
 
 button, input[type="submit"]{
@@ -172,12 +176,59 @@ button, input[type="submit"]{
     display: inline-block;
     color: #E02B03;
     cursor: pointer;
+    font-size: 12px;
 }
+
+.fields{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.survey_fields{
+    width: 296px;
+
+}
+
+.site_fields{
+    width: 422px;
+}
+
 
 .page_number{
     font-weight: bold;
+    font-size: 17px;
 }
 
 .page_instructions{
     font-size: 12px;
+    margin-left: 10px;
+}
+
+#name, #date, #duration, #weather{
+    width: 282px;
+}
+
+.time{
+    width: 88px;
+}
+
+#route_display_name{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.individual_site_container{
+    margin-bottom: 25px;
+    padding: 6px 20px 8px 20px;
+}
+
+.site_text_input{
+    width: 221px;
+}
+
+.bird_container{
+    border: 2px solid #FF9F02;
+    padding: 15px 20px 15px 20px;
+    margin: 10px 0px 24px 0px;
 }
