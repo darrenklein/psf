@@ -72,9 +72,9 @@ $(document).ready(function(){
                                     });
         
                         noneNotesLabel = $("<label/>", {
-                                        text: 'Notes: ',
+                                        text: 'Notes:',
                                         for: 'nonenotes'+siteNumber+''
-                                        }).append(noneNotes);
+                                        }).append('&nbsp;&nbsp;').append(noneNotes);
 
                         siteImage = $("<input/>", {
                                     type: 'file',
@@ -92,7 +92,7 @@ $(document).ready(function(){
                                 });
         
                         siteImageLabel = $("<label/>", {
-                                    text: 'Attach an image: ',
+                                    text: 'Attach an image:',
                                     for: 'siteimage'+siteNumber+'',
                                     }).append("<br/>").append(siteImage);
         
@@ -143,13 +143,13 @@ $(document).ready(function(){
                             });
                 deadInjuredContainer = $("<div/>", {
                             class: 'site_entry_field'
-                            }).prepend('Status: ');
+                            }).prepend('Status:&nbsp;&nbsp;');
                 sexContainer = $("<div/>", {
                             class: 'site_entry_field'
-                            }).prepend('Sex: ');
+                            }).prepend('Sex:&nbsp;&nbsp;');
                 ageContainer = $("<div/>", {
                             class: 'site_entry_field'
-                            }).prepend('Age: ');
+                            }).prepend('Age:&nbsp;&nbsp;');
                 actionContainer = $("<div/>", {
                             class: 'site_entry_field'
                             });
@@ -172,7 +172,7 @@ $(document).ready(function(){
                     speciesLabel = $("<label/>", {
                                 text: 'Species: ',
                                 for: 'species'+siteNumber+''+x+''
-                                }).append(species);
+                                }).append('&nbsp;&nbsp;').append(species);
 
                     dead = $("<input/>", {
                             type: 'radio',
@@ -183,7 +183,8 @@ $(document).ready(function(){
                             });
         
                     deadLabel = $("<label/>", {
-                                text: 'Dead',
+                                text: 'Dead ',
+                                class: 'site_radio',
                                 for: 'dead'+siteNumber+''+x+''
                                 }).append(dead);
 
@@ -195,7 +196,8 @@ $(document).ready(function(){
                             });
         
                     injuredLabel = $("<label/>", {
-                                text: 'Injured',
+                                text: 'Injured ',
+                                class: 'site_radio',
                                 for: 'injured'+siteNumber+''+x+''
                                 }).append(injured);
 
@@ -207,7 +209,8 @@ $(document).ready(function(){
                             });
         
                     maleLabel = $("<label/>", {
-                                text: 'Male',
+                                text: 'Male ',
+                                class: 'site_radio',
                                 for: 'male'+siteNumber+''+x+''
                                 }).append(male);
 
@@ -219,7 +222,8 @@ $(document).ready(function(){
                             });
         
                     femaleLabel = $("<label/>", {
-                                text: 'Female',
+                                text: 'Female ',
+                                class: 'site_radio',
                                 for: 'female'+siteNumber+''+x+''
                                 }).append(female);
 
@@ -232,7 +236,8 @@ $(document).ready(function(){
                             });
         
                     sexUnknownLabel = $("<label/>", {
-                                    text: 'Unknown',
+                                    text: 'Unknown ',
+                                    class: 'site_radio',
                                     for: 'sexUnknown'+siteNumber+''+x+''
                                     }).append(sexUnknown);
 
@@ -244,7 +249,8 @@ $(document).ready(function(){
                             });
         
                     adultLabel = $("<label/>", {
-                                    text: 'Adult',
+                                    text: 'Adult ',
+                                    class: 'site_radio',
                                     for: 'adult'+siteNumber+''+x+''
                                 }).append(adult);
 
@@ -256,7 +262,8 @@ $(document).ready(function(){
                             });
         
                     juvenileLabel = $("<label/>", {
-                                    text: 'Juvenile',
+                                    text: 'Juvenile ',
+                                    class: 'site_radio',
                                     for: 'juvenile'+siteNumber+''+x+''
                                     }).append(juvenile);
 
@@ -269,7 +276,8 @@ $(document).ready(function(){
                             });
         
                     ageUnknownLabel = $("<label/>", {
-                                text: 'Unknown',
+                                text: 'Unknown ',
+                                class: 'site_radio',
                                 for: 'ageUnknown'+siteNumber+''+x+''
                                 }).append(ageUnknown);
 
@@ -284,7 +292,7 @@ $(document).ready(function(){
                     actionLabel = $("<label/>", {
                                 text: 'Action: ',
                                 for: 'action'+siteNumber+''+x+''
-                                }).append(action);
+                                }).append('&nbsp;&nbsp;').append(action);
 
                     notes = $("<input/>", {
                             type: 'text',
@@ -296,7 +304,7 @@ $(document).ready(function(){
                     notesLabel = $("<label/>", {
                                 text: 'Notes: ',
                                 for: 'notes'+siteNumber+''+x+''
-                                }).append(notes);
+                                }).append('&nbsp;&nbsp;').append(notes);
 
                     image = $("<input/>", {
                             type: 'file',
@@ -313,7 +321,7 @@ $(document).ready(function(){
                         });
         
                     imageLabel = $("<label/>", {
-                                text: 'Attach an image: ',
+                                text: 'Attach an image:',
                                 for: 'image'+siteNumber+''+x+''
                                 }).append(image);
         
@@ -353,6 +361,243 @@ $(document).ready(function(){
     };
     
 
+
+    $(document).on("change", "#route", function(){
+
+        $("#sites").empty();
+
+        routeName = $(this).find('option:selected').text();
+        $("#sites").prepend("<div id='route_display_name'>"+routeName+"</div>");
+
+        siteCount = $(this.options[this.selectedIndex]).attr('data-sites');
+
+        for(i = 1; i <= siteCount; i++){
+            $("#sites").append("<fieldset class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><legend data-site_number='"+i+"'>Site "+i+" - Number of birds found: <select class='number_select' id='site"+i+"_number_found' name='site["+i+"]'>"+birdCounter+"</select></legend></fieldset>");
+            $("#site"+i+"").append(noneInput(i));
+        };
+
+        var siteNumber;
+        this['initiated' + siteNumber];
+        this['inputArray' + siteNumber];
+        this['arrayLength' + siteNumber];
+
+        $(document).on("change", ".number_select", function(){
+
+            numberFound = $(this).val();
+            siteNumber = $(this).parent().attr('data-site_number');
+
+            if(numberFound === "0"){
+                $("#site"+siteNumber+"").append(noneInput(siteNumber));
+            };
+
+            if(this['initiated' + siteNumber]){
+                if(this['arrayLength' + siteNumber] > numberFound){
+                    for(z = this['arrayLength' + siteNumber]; z > numberFound; z--){
+                        $("#birdcontainer"+siteNumber+""+z+"").remove();
+                        this['inputArray' + siteNumber].pop();
+                    };
+                    this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
+                }
+                else{
+                    $("#nonecontainer"+siteNumber+"").remove();
+
+                    elementsAdd = numberFound - this['arrayLength' + siteNumber];
+
+                    for(y = 1; y <= elementsAdd; y++){
+                        x = this['arrayLength' + siteNumber] + y;
+
+                        newInput = speciesInput(siteNumber, x);
+
+                        //$(this).parent().append(newInput);
+                        $("#site"+siteNumber+"").append(newInput);
+                        this['inputArray' + siteNumber].push(newInput);   
+                    };
+
+                    this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
+                };
+            }
+            else{
+
+                $("#nonecontainer"+siteNumber+"").remove();
+
+                this['initiated' + siteNumber] = true;
+                this['inputArray' + siteNumber] = [];
+
+                for(x = 1; x <= numberFound; x++){
+                    this['inputArray' + siteNumber].push(speciesInput(siteNumber, x));
+                };
+
+                this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
+                //$(this).parent().append(this['inputArray' + siteNumber]);
+                $("#site"+siteNumber+"").append(this['inputArray' + siteNumber]);
+            };
+        });
+
+        //SITE VALIDATIONS, BUILDING THE SUMMARY...
+        $(document).on("click", "#next_to_summary", function(){
+
+            //VALIDATION
+            var proceed = true;
+            var totalFileSize = 0;
+
+            $(".species_select").each(function() {
+
+                if ($(this).val() == null){
+                    site = $(this).attr("site");
+                    bird = $(this).attr("bird");
+                    alert("Please select the species of bird "+bird+" at site "+site+"");
+                    proceed = false;
+                };
+            });
+
+
+            $(".action_select").each(function(){
+
+                if ($(this).val() == null){
+                    site = $(this).attr("site");
+                    bird = $(this).attr("bird");  
+                    alert("Please select the action taken for bird "+bird+" at site "+site+"");
+                    proceed = false;
+                };   
+            });
+
+
+
+            $(".image_attachment").each(function(){
+
+                if($(this).data('file_type') != 'jpg' && $(this).data('file_type') != 'jpeg' && $(this).data('file_type') != 'png' && $(this).data('file_type') != 'gif' && $(this).data('file_type') != 'tif' && $(this).data('file_type') != 'tiff' && $(this).data('file_type') != '' && $(this).data('file_type') != undefined){
+                    alert("One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.");
+                    proceed = false;
+                };
+
+                if($(this).data('file_size') == undefined){
+                    fileSize = 0;
+                }
+                else{
+                    fileSize = $(this).data('file_size');
+                };
+
+                totalFileSize += fileSize;
+            });
+
+
+            if(totalFileSize > 48000000){
+                megaBytes = Math.ceil(totalFileSize/1000000);
+
+                alert("Total size of attached images is too large - 48Mb max. Your current attachment total is "+megaBytes+"Mb.");
+                proceed = false;
+            };
+
+
+            if(proceed){
+
+                //CLEAR THEM OUT TO BE FILLED/REFILLED
+                $(".summary_field").empty();
+                $("#site_summaries").empty();
+
+                //HIDE SITES, DISPLAY SUMMARY
+                $("#site_info").css("display", "none");
+                $("#summary").css("display", "block");
+
+                name = document.getElementById("name").value;
+                date = document.getElementById("date").value;
+                time = document.getElementById("hour").value + ":" + document.getElementById("minute").value + document.getElementById("ampm").value
+                duration = document.getElementById("duration").value;
+                weather = $('#weather option:selected').text();
+
+                //SURVEY FIELDS
+                $("#summary_name").append(name);
+                $("#summary_date").append(date);
+                $("#summary_time").append(time);
+                $("#summary_duration").append(duration + " minutes");
+                $("#summary_weather").append(weather);
+                $("#summary_route").append(routeName);
+
+
+                for (i = 1; i <= siteCount; i++){
+
+                    summaryNumberFound = $("#site"+i+"_number_found").val();
+
+                    $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="site_summary_header">Site '+i+'</div></div>');
+
+                    if (summaryNumberFound === "0"){
+                        summaryNoneNotes = $("#nonenotes"+i+"").val();
+                        summarySiteImage = $("#siteimage"+i+"").data("file_name");
+
+                        if(summaryNoneNotes == ""){
+                            summaryNoneNotes = "No birds found at this site";
+                        };
+
+                        if(summarySiteImage == undefined || summarySiteImage == ""){
+                            summarySiteImage = "No image attached for this site";  
+                        }
+                        else{
+                            summarySiteImage = ""+summarySiteImage+"";
+                        };
+
+                        $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
+                    }
+
+                    else{
+
+                        for (z = 1; z <= summaryNumberFound; z++){
+
+                            summarySpecies = $("#species"+i+""+z+"").find('option:selected').text();
+
+                            if ($("#dead"+i+""+z+"").prop('checked')){
+                                summaryDeadInjured = "Dead";
+                            }
+                            else {
+                                summaryDeadInjured = "Injured";
+                            };
+
+                            if ($("#male"+i+""+z+"").prop('checked')){
+                                summarySex = "Male";
+                            }
+                            else if ($("#female"+i+""+z+"").prop('checked')){
+                                summarySex = "Female";
+                            }
+                            else{
+                                summarySex = "Unknown";
+                            };
+
+                            if ($("#adult"+i+""+z+"").prop('checked')){
+                                summaryAge = "Adult";
+                            }
+                            else if ($("#juvenile"+i+""+z+"").prop('checked')){
+                                summaryAge = "Juvenile";
+                            }
+                            else{
+                                summaryAge = "Unknown";
+                            };
+
+                            summaryAction = $("#action"+i+""+z+"").find('option:selected').text();
+                            summaryNotes = $("#notes"+i+""+z+"").val();
+
+                            summaryImage = $("#image"+i+""+z+"").data("file_name");
+
+                            if(summaryImage == undefined || summaryImage == ""){
+                                summaryImage = "No image attached for this bird";
+                            }
+                            else{
+                                summaryImage = ""+summaryImage+"";  
+                            };
+
+                            $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
+
+                        };
+
+                    };
+
+                };
+
+            };
+
+        });
+    });
+    
+    
+    
     $(document).on("click", "#next_to_sites", function(){
         
         //$('html, body').animate({ scrollTop: 0 }, 'fast');
@@ -365,10 +610,10 @@ $(document).ready(function(){
         amPm = $("#ampm").val();
         duration = $("#duration").val();
         weather = $("#weather").val();
-        route = $("#route");
+        route = $("#route").val;
 
 
-        if (name === "" || date === "" || hour == null || minute == null || amPm == null || duration == null || weather == null || route.val() == null){
+        if (name === "" || date === "" || hour == null || minute == null || amPm == null || duration == null || weather == null || route == null){
 
             if (name === ""){
                 alert("Please enter your name");
@@ -398,248 +643,15 @@ $(document).ready(function(){
                 alert("Please select weather");
             }
 
-            if (route.val() == null){
+            if (route == null){
                 alert("Please select a route");
             }
-        }
-        //BUILDING THE SITE INFO PAGE...    
+        }   
         else{
-            
-            $("#sites").empty();
-
-            routeName = $(route).find(':selected').text();
-            $("#sites").prepend("<div id='route_display_name'>"+routeName+"</div>");
-
-            siteCount = $(route).find(':selected').data('sites');
-
-            for(i = 1; i <= siteCount; i++){
-                $("#sites").append("<fieldset class='individual_site_container' id='site"+i+"' data-site_number='"+i+"'><legend data-site_number='"+i+"'>Site "+i+" - Number of birds found: <select class='number_select' id='site"+i+"_number_found' name='site["+i+"]'>"+birdCounter+"</select></legend></fieldset>");
-                $("#site"+i+"").append(noneInput(i));
-            };
-
-            var siteNumber;
-            this['initiated' + siteNumber];
-            this['inputArray' + siteNumber];
-            this['arrayLength' + siteNumber];
-
-            $(document).on("change", ".number_select", function(){
-
-                numberFound = $(this).val();
-                siteNumber = $(this).parent().attr('data-site_number');
-
-                if(numberFound === "0"){
-                    $("#site"+siteNumber+"").append(noneInput(siteNumber));
-                };
-
-                if(this['initiated' + siteNumber]){
-                    if(this['arrayLength' + siteNumber] > numberFound){
-                        for(z = this['arrayLength' + siteNumber]; z > numberFound; z--){
-                            $("#birdcontainer"+siteNumber+""+z+"").remove();
-                            this['inputArray' + siteNumber].pop();
-                        };
-                        this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
-                    }
-                    else{
-                        $("#nonecontainer"+siteNumber+"").remove();
-
-                        elementsAdd = numberFound - this['arrayLength' + siteNumber];
-
-                        for(y = 1; y <= elementsAdd; y++){
-                            x = this['arrayLength' + siteNumber] + y;
-
-                            newInput = speciesInput(siteNumber, x);
-
-                            //$(this).parent().append(newInput);
-                            $("#site"+siteNumber+"").append(newInput);
-                            this['inputArray' + siteNumber].push(newInput);   
-                        };
-
-                        this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
-                    };
-                }
-                else{
-
-                    $("#nonecontainer"+siteNumber+"").remove();
-
-                    this['initiated' + siteNumber] = true;
-                    this['inputArray' + siteNumber] = [];
-
-                    for(x = 1; x <= numberFound; x++){
-                        this['inputArray' + siteNumber].push(speciesInput(siteNumber, x));
-                    };
-
-                    this['arrayLength' + siteNumber] = this['inputArray' + siteNumber].length;
-                    //$(this).parent().append(this['inputArray' + siteNumber]);
-                    $("#site"+siteNumber+"").append(this['inputArray' + siteNumber]);
-                };
-            });
-
-            //SITE VALIDATIONS, BUILDING THE SUMMARY...
-            $(document).on("click", "#next_to_summary", function(){
-
-                //VALIDATION
-                var proceed = true;
-                var totalFileSize = 0;
-
-                $(".species_select").each(function() {
-
-                    if ($(this).val() == null){
-                        site = $(this).attr("site");
-                        bird = $(this).attr("bird");
-                        alert("Please select the species of bird "+bird+" at site "+site+"");
-                        proceed = false;
-                    };
-                });
-
-
-                $(".action_select").each(function(){
-
-                    if ($(this).val() == null){
-                        site = $(this).attr("site");
-                        bird = $(this).attr("bird");  
-                        alert("Please select the action taken for bird "+bird+" at site "+site+"");
-                        proceed = false;
-                    };   
-                });
-
-
-
-                $(".image_attachment").each(function(){
-                    
-                    if($(this).data('file_type') != 'jpg' && $(this).data('file_type') != 'jpeg' && $(this).data('file_type') != 'png' && $(this).data('file_type') != 'gif' && $(this).data('file_type') != 'tif' && $(this).data('file_type') != 'tiff' && $(this).data('file_type') != '' && $(this).data('file_type') != undefined){
-                        alert("One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed.");
-                        proceed = false;
-                    };
-                    
-                    if($(this).data('file_size') == undefined){
-                        fileSize = 0;
-                    }
-                    else{
-                        fileSize = $(this).data('file_size');
-                    };
-
-                    totalFileSize += fileSize;
-                });
-
-                
-                if(totalFileSize > 48000000){
-                    megaBytes = Math.ceil(totalFileSize/1000000);
-
-                    alert("Total size of attached images is too large - 48Mb max. Your current attachment total is "+megaBytes+"Mb.");
-                    proceed = false;
-                };
-                
-
-                if(proceed){
-
-                    //CLEAR THEM OUT TO BE FILLED/REFILLED
-                    $(".summary_field").empty();
-                    $("#site_summaries").empty();
-
-                    //HIDE SITES, DISPLAY SUMMARY
-                    $("#site_info").css("display", "none");
-                    $("#summary").css("display", "block");
-
-                    name = document.getElementById("name").value;
-                    date = document.getElementById("date").value;
-                    time = document.getElementById("hour").value + ":" + document.getElementById("minute").value + document.getElementById("ampm").value
-                    duration = document.getElementById("duration").value;
-                    weather = $('#weather option:selected').text();
-
-                    //SURVEY FIELDS
-                    $("#summary_name").append(name);
-                    $("#summary_date").append(date);
-                    $("#summary_time").append(time);
-                    $("#summary_duration").append(duration + " minutes");
-                    $("#summary_weather").append(weather);
-                    $("#summary_route").append(routeName);
-
-
-                    for (i = 1; i <= siteCount; i++){
-
-                        summaryNumberFound = $("#site"+i+"_number_found").val();
-
-                        $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="site_summary_header">Site '+i+'</div></div>');
-
-                        if (summaryNumberFound === "0"){
-                            summaryNoneNotes = $("#nonenotes"+i+"").val();
-                            summarySiteImage = $("#siteimage"+i+"").data("file_name");
-
-                            if(summaryNoneNotes == ""){
-                                summaryNoneNotes = "No birds found at this site";
-                            };
-
-                            if(summarySiteImage == undefined || summarySiteImage == ""){
-                                summarySiteImage = "No image attached for this site";  
-                            }
-                            else{
-                                summarySiteImage = ""+summarySiteImage+"";
-                            };
-
-                            $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
-                        }
-
-                        else{
-
-                            for (z = 1; z <= summaryNumberFound; z++){
-
-                                summarySpecies = $("#species"+i+""+z+"").find('option:selected').text();
-
-                                if ($("#dead"+i+""+z+"").prop('checked')){
-                                    summaryDeadInjured = "Dead";
-                                }
-                                else {
-                                    summaryDeadInjured = "Injured";
-                                };
-
-                                if ($("#male"+i+""+z+"").prop('checked')){
-                                    summarySex = "Male";
-                                }
-                                else if ($("#female"+i+""+z+"").prop('checked')){
-                                    summarySex = "Female";
-                                }
-                                else{
-                                    summarySex = "Unknown";
-                                };
-
-                                if ($("#adult"+i+""+z+"").prop('checked')){
-                                    summaryAge = "Adult";
-                                }
-                                else if ($("#juvenile"+i+""+z+"").prop('checked')){
-                                    summaryAge = "Juvenile";
-                                }
-                                else{
-                                    summaryAge = "Unknown";
-                                };
-
-                                summaryAction = $("#action"+i+""+z+"").find('option:selected').text();
-                                summaryNotes = $("#notes"+i+""+z+"").val();
-                                
-                                summaryImage = $("#image"+i+""+z+"").data("file_name");
-
-                                if(summaryImage == undefined || summaryImage == ""){
-                                    summaryImage = "No image attached for this bird";
-                                }
-                                else{
-                                    summaryImage = ""+summaryImage+"";  
-                                };
-
-                                $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
-
-                            };
-
-                        };
-
-                    };
-
-                };
-
-            });
-            
             $("#survey_info").css("display", "none");
             $("#site_info").css("display", "block");
         };
-
+        
     });
     
     
