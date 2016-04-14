@@ -52,6 +52,7 @@ $(document).ready(function(){
     function noneInput(siteNumber){
         
                 noneContainer = $("<div/>", {
+                        class: 'none_container',
                         id: 'nonecontainer'+siteNumber+''
                         });
         
@@ -490,6 +491,8 @@ $(document).ready(function(){
 
 
             if(proceed){
+                
+                $('html, body').animate({scrollTop: $("#contents").offset().top}, 'fast');
 
                 //CLEAR THEM OUT TO BE FILLED/REFILLED
                 $(".summary_field").empty();
@@ -518,7 +521,7 @@ $(document).ready(function(){
 
                     summaryNumberFound = $("#site"+i+"_number_found").val();
 
-                    $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="site_summary_header">Site '+i+'</div></div>');
+                    $("#site_summaries").append('<div class="site_summary" id="site'+i+'_summary"><div class="summary_header">Site '+i+'</div></div>');
 
                     if (summaryNumberFound === "0"){
                         summaryNoneNotes = $("#nonenotes"+i+"").val();
@@ -535,7 +538,7 @@ $(document).ready(function(){
                             summarySiteImage = ""+summarySiteImage+"";
                         };
 
-                        $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</div><div class="individual_summary">Image: '+summarySiteImage+'</div>');
+                        $("#site"+i+"_summary").append('<div class="individual_summary">Notes: '+summaryNoneNotes+'</br>Image: '+summarySiteImage+'</div>');
                     }
 
                     else{
@@ -583,7 +586,7 @@ $(document).ready(function(){
                                 summaryImage = ""+summaryImage+"";  
                             };
 
-                            $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong></br>Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div>');
+                            $("#site"+i+"_summary").append('<div class="individual_summary"><strong>Bird '+z+'</strong><div class="individual_summary_fields">Species: '+summarySpecies+'</br>Status: '+summaryDeadInjured+'</br>Sex: '+summarySex+'</br>Age: '+summaryAge+'</br>Action: '+summaryAction+'</br>Notes: '+summaryNotes+'</br>Image: '+summaryImage+'</div></div>');
 
                         };
 
@@ -601,6 +604,7 @@ $(document).ready(function(){
     $(document).on("click", "#next_to_sites", function(){
         
         //$('html, body').animate({ scrollTop: 0 }, 'fast');
+        $('html, body').animate({scrollTop: $("#contents").offset().top}, 'fast');
         
         //VALIDATION
         name = $("#name").val()
@@ -657,12 +661,14 @@ $(document).ready(function(){
     
     
     $("#previous_to_survey").click(function(){
+        $('html, body').animate({scrollTop: $("#contents").offset().top}, 'fast');
         $("#site_info").css("display", "none");
         $("#survey_info").css("display", "block");
     });
     
     
     $("#previous_to_sites").click(function(){
+        $('html, body').animate({scrollTop: $("#contents").offset().top}, 'fast');
         $("#summary").css("display", "none");
         $("#site_info").css("display", "block");
     });
