@@ -1,5 +1,11 @@
 $(document).ready(function(){
     
+    //MAKES SURE THE FORM CLEARS IF NAVIGATING BACK/FORWARD TO THE FORM
+    document.getElementById("name").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("weather").selectedIndex = 0;
+    document.getElementById("route").selectedIndex = 0;
+    
     $("#date").datepicker({maxDate: "+0D", dateFormat: "yy-mm-dd"});
     
     //TIMEPICKER HOURS
@@ -603,7 +609,6 @@ $(document).ready(function(){
     
     $(document).on("click", "#next_to_sites", function(){
         
-        //$('html, body').animate({ scrollTop: 0 }, 'fast');
         $('html, body').animate({scrollTop: $("#contents").offset().top}, 'fast');
         
         //VALIDATION

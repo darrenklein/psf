@@ -89,6 +89,7 @@ a:hover, a:focus{
 }
 
 .site_entry_field{
+    width: 328px;
     margin: 5px 0px 11px 0px;
 }
 
