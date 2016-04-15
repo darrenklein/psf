@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    //MAKES SURE THE FORM CLEARS IF NAVIGATING BACK/FORWARD TO THE FORM
+    //MAKES SURE THE FORM CLEARS IF NAVIGATING BACK/FORWARD TO THE FORM - AN ISSUE IN SOME BROWSERS
     document.getElementById("name").value = "";
     document.getElementById("date").value = "";
     document.getElementById("weather").selectedIndex = 0;
@@ -109,13 +109,35 @@ $(document).ready(function(){
                                 id: 'clear'+siteNumber+'',
                                 on: {
                                     click: function(){
+                                        //CODE BELOW USED TO CLEAR IMAGE ATTACHMENTS COMMENTED OUT BECAUSE IT DOES NOT WORK IN FIREFOX... SOME PROBLEM WITH COMBINATION OF REPLACE AND CLONE METHODS. FUNCTIONAL CODE BELOW THIS WORKS FOR ALL BROWSERS, THOUGH IT IS LESS ELEGANT.
+                                        /*
                                         $('#siteimage'+siteNumber+'').data('file_name', '');
                                         $('#siteimage'+siteNumber+'').data('file_size', 0);
                                         $('#siteimage'+siteNumber+'').data('file_type', '');
-
+                                        
                                         fileInput = $('#siteimage'+siteNumber+'');
                                         fileInput.replaceWith(fileInput = fileInput.clone(true));
-                                    }  
+                                        */
+                                        
+                                        oldSiteImage = $('#siteimage'+siteNumber+'');
+                                        
+                                        newSiteImage = $("<input/>", {
+                                            type: 'file',
+                                            class: 'image_attachment',
+                                            id: 'siteimage'+siteNumber+'',
+                                            name: 'siteimage'+siteNumber+'',
+                                            attr: ('data-file_name', ''),
+                                            on: {
+                                                change: function(){
+                                                    $(this).data('file_name', this.files[0].name);
+                                                    $(this).data('file_size', this.files[0].size);
+                                                    $(this).data('file_type', this.files[0].name.split(".")[1].toLowerCase());
+                                                }
+                                            }
+                                        });
+                                        
+                                        oldSiteImage.replaceWith(newSiteImage);
+                                    }
                                 }
                             });
         
@@ -339,12 +361,33 @@ $(document).ready(function(){
                             id: 'clear'+siteNumber+''+x+'',
                             on: {
                                 click: function(){
+                                    //CODE BELOW USED TO CLEAR IMAGE ATTACHMENTS COMMENTED OUT BECAUSE IT DOES NOT WORK IN FIREFOX... SOME PROBLEM WITH COMBINATION OF REPLACE AND CLONE METHODS.  FUNCTIONAL CODE BELOW THIS WORKS FOR ALL BROWSERS, THOUGH IT IS LESS ELEGANT.
+                                    /*
                                     $('#image'+siteNumber+''+x+'').data('file_name', '');
                                     $('#image'+siteNumber+''+x+'').data('file_size', 0);
                                     $('#image'+siteNumber+''+x+'').data('file_type', '');
 
                                     fileInput = $('#image'+siteNumber+''+x+'');
                                     fileInput.replaceWith(fileInput = fileInput.clone(true));
+                                    */
+                                    
+                                    oldBirdImage = $('#image'+siteNumber+''+x+'');
+                                        
+                                    newBirdImage = $("<input/>", {
+                                        type: 'file',
+                                        class: 'image_attachment',
+                                        id: 'image'+siteNumber+''+x+'',
+                                        name: 'image'+siteNumber+'['+x+']',
+                                        on: {
+                                            change: function(){
+                                                $(this).data('file_name', this.files[0].name);
+                                                $(this).data('file_size', this.files[0].size);
+                                                $(this).data('file_type', this.files[0].name.split(".")[1].toLowerCase());
+                                            }
+                                        }
+                                    });
+                                        
+                                    oldBirdImage.replaceWith(newBirdImage);
                                 } 
                             }
                         });
