@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    //TESTING GIT
+    
     
     //MAKES SURE THE FORM CLEARS IF NAVIGATING BACK/FORWARD TO THE FORM - AN ISSUE IN SOME BROWSERS
     document.getElementById("name").value = "";
