@@ -3,6 +3,7 @@ $(document).ready(function(){
     //MAKES SURE THE FORM CLEARS IF NAVIGATING BACK/FORWARD TO THE FORM - AN ISSUE IN SOME BROWSERS
     document.getElementById("name").value = "";
     document.getElementById("date").value = "";
+    document.getElementById("ampm").selectedIndex = 0;
     document.getElementById("weather").selectedIndex = 0;
     document.getElementById("route").selectedIndex = 0;
     
