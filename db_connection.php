@@ -82,7 +82,7 @@ else{
                     };
                     
                     if(move_uploaded_file($_FILES['siteimage'.$siteNumber.'']['tmp_name'], $target_file)){
-                        $image_url = $target_file;
+                        $image_url = 'http://www.d-bird.org/test/psf/' . $target_file;
                     };
                 };
             };
@@ -139,7 +139,8 @@ else{
                         };
                         
                         if(move_uploaded_file($_FILES['image'.$siteNumber.'']['tmp_name'][$key], $target_file)){
-                            $image_url = $conn->real_escape_string($target_file);
+                            $target_file = $conn->real_escape_string($target_file);
+                            $image_url = 'http://www.d-bird.org/test/psf/' . $target_file;
                         };
                     };
                 }
