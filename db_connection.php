@@ -10,9 +10,10 @@ if($honeyLength > 0){
 
 else{
 
-    require '../credentials.php';
     $servername = "localhost";
-    $dbname = "Project_Safe_Flight";
+    $username = "***";
+    $password = "***";
+    $dbname = "***";
     $target_dir = "uploads/";
     
     $fileTypeErrorMessage = "One of your images is not in the correct format - only jpg, jpeg, png, gif, tif, & tiff files are allowed. ";
@@ -48,11 +49,11 @@ else{
             $siteImage = $conn->real_escape_string($_FILES['siteimage'.$siteNumber.'']['name']);
 
             if(empty($noneNotes)){
-                $noneNotes = "NULL";
+                $noneNotes = NULL;
             }
             
             if(empty($siteImage)){
-                $image_url = "NULL";   
+                $image_url = NULL;   
             }
             else{
                 $target_file = ($target_dir . rand(1, 9999999) . strtolower(basename($siteImage)));
@@ -82,13 +83,13 @@ else{
                     };
                     
                     if(move_uploaded_file($_FILES['siteimage'.$siteNumber.'']['tmp_name'], $target_file)){
-                        $image_url = 'http://www.d-bird.org/test/psf/' . $target_file;
+                        $image_url = 'http://www.d-bird.org/psf/' . $target_file;
                     };
                 };
             };
 
             $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, sex, age, action, notes, image_url)
-            VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '$noneNotes' ,'$image_url');";
+            VALUES ('$name', '$date', '$startTime','$duration', '$weather','$route', '$siteNumber', 'none', NULL, NULL, NULL, NULL, '$noneNotes' ,'$image_url');";
         }
         else{
             $species_array[$siteNumber] = $_POST['species'.$siteNumber.''];
@@ -108,7 +109,7 @@ else{
                 $notes = $conn->real_escape_string($notes_array[$siteNumber][$key]);
                 
                 if(empty($notes)){
-                    $notes = "NULL";
+                    $notes = NULL;
                 }
 
                 if($image_array[$siteNumber][$key]){
@@ -140,12 +141,12 @@ else{
                         
                         if(move_uploaded_file($_FILES['image'.$siteNumber.'']['tmp_name'][$key], $target_file)){
                             $target_file = $conn->real_escape_string($target_file);
-                            $image_url = 'http://www.d-bird.org/test/psf/' . $target_file;
+                            $image_url = 'http://www.d-bird.org/psf/' . $target_file;
                         };
                     };
                 }
                 else{
-                    $image_url = "NULL";
+                    $image_url = NULL;
                 };
 
                 $sql .= "INSERT INTO PSFIST (volunteer, date, start_time, duration, weather, route, site, species, deadinjured, sex, age, action, notes, image_url)
